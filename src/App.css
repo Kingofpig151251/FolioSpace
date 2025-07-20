@@ -8,29 +8,20 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-
   overflow: hidden;
-
   margin: 0;
-
   background: #F6F6F6;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .App {
   font-family: 'Inter', sans-serif;
-
   position: relative;
-
   overflow: hidden;
-  overflow: hidden;
-
   width: 100vw;
   height: 100vh;
   min-height: 100vh;
-
   color: #101010;
   background: #F6F6F6;
 }
@@ -40,192 +31,213 @@ body {
   z-index: -1;
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
-
   content: '';
   animation: float 8s ease-in-out infinite;
-
   background: radial-gradient(circle at 25% 25%, rgba( 27, 41, 255, 0.03) 0%, transparent 50%) , radial-gradient( circle at 75% 75%, rgba( 27, 41, 255, 0.02) 0%, transparent 50%);
 }
 
 @keyframes float {
-
-0%,
-100% {
-  transform: translateY(0px);
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-50% {
-  transform: translateY(-10px);
-}
-
-}
-
+/* Optimized impress.js step styles */
 .step {
   font-size: 16px;
   line-height: 1.6;
-
   position: relative;
-
-  visibility: hidden;
-  overflow: hidden;
-
   width: 1000px;
   padding: 40px;
-
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(0.95) translateZ( 0);
-  pointer-events: none;
-
-  opacity: 0;
   border: 1px solid rgba(16, 16, 16, 0.05);
   border-radius: 16px;
   background: #FFFFFF;
   box-shadow: 0 8px 32px rgba(16, 16, 16, 0.1);
+
+  /* Initially hide all steps */
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  /* Smooth transitions for all state changes */
+  -webkit-transition: opacity 1s, visibility 1s, transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: opacity 1s, visibility 1s, transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  -ms-transition: opacity 1s, visibility 1s, transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: opacity 1s, visibility 1s, transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 1s, visibility 1s, transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.step.active {
+/* When impress is enabled, all steps are faded by default */
+.impress-enabled .step {
+  margin: 0;
+  opacity: 0.3;
   visibility: visible;
+  pointer-events: none;
 
-  transform: scale(1) translateZ( 0);
-  pointer-events: auto;
-
-  opacity: 1;
+  -webkit-transition: opacity 1s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: opacity 1s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  -ms-transition: opacity 1s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: opacity 1s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 1s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.step.active:hover {
-  transform: scale(1.01) translateZ( 0);
+/* ONLY the active step is fully visible and interactive */
+.impress-enabled .step.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1) translateZ(0);
+}
 
+/* Hover effect for active step */
+.impress-enabled .step.active:hover {
+  transform: scale(1.01) translateZ(0);
   border-color: rgba(27, 41, 255, 0.2);
   box-shadow: 0 12px 40px rgba(16, 16, 16, 0.15);
 }
 
+/* Overview mode - all steps are visible and clickable */
+.impress-on-overview .step {
+  opacity: 0.8;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.impress-on-overview .step:hover {
+  opacity: 1;
+  transform: scale(1.05) translateZ(0);
+  box-shadow: 0 16px 48px rgba(16, 16, 16, 0.2);
+}
+
+.impress-on-overview .step.active {
+  opacity: 1;
+  border-color: rgba(27, 41, 255, 0.4);
+}
+
+/* Hide overview step by default */
+#overview {
+  display: none;
+}
+
+/* Remove the future and present classes - only active matters */
+
+/* Scale adjustments for better visibility */
+.impress-enabled .step {
+  transform-origin: center center;
+}
+
+/* Smoother fade transitions for slide content */
+.step * {
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Only active slide has full opacity content */
+.step.active * {
+  opacity: 1;
+}
+
+/* All non-active slides have slightly faded content */
+.step:not(.active) * {
+  opacity: 0.8;
+}
+
+/* Title slide specific styles */
 #title:not(.step-processed) {
   visibility: visible;
-
-  transform: scale(1) translateZ( 0);
+  transform: scale(1) translateZ(0);
   pointer-events: auto;
-
   opacity: 1;
 }
 
 .title-slide {
   position: relative;
-
   text-align: center;
-
   background: #FFFFFF;
 }
 
 .title-slide h1 {
   font-size: 3.5em;
   font-weight: 700;
-
   margin-bottom: 24px;
-
   animation: slideInUp 0.8s ease-out;
-
   color: #1B29FF;
 }
 
 .title-slide p {
   font-size: 1.3em;
-
   margin-bottom: 32px;
-
   animation: slideInUp 0.8s ease-out 0.2s both;
-
   color: #101010;
 }
 
 .title-slide .scroll-hint {
   font-size: 0.9em;
-
   animation: pulse 2s infinite, slideInUp 0.8s ease-out 0.4s both;
-
   color: #666666;
 }
 
 @keyframes slideInUp {
-
-from {
-  transform: translateY(30px);
-
-  opacity: 0;
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-to {
-  transform: translateY(0);
-
-  opacity: 1;
-}
-
-}
 @keyframes pulse {
-
-0%,
-100% {
-  opacity: 0.6;
-}
-
-50% {
-  opacity: 1;
-}
-
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .overview-title {
   margin-bottom: 40px;
-
   text-align: center;
 }
 
 .overview-title h1 {
   font-size: 2.5em;
   font-weight: 700;
-
   margin-bottom: 16px;
-
   animation: slideInUp 0.8s ease-out;
-
   color: #1B29FF;
 }
 
 .overview-title p {
   font-size: 1.1em;
-
   animation: slideInUp 0.8s ease-out 0.2s both;
-
   color: #666666;
 }
 
 .overview-grid {
   display: grid;
-
   padding: 20px 0;
-
   animation: fadeInUp 0.8s ease-out;
-
   grid-template-columns: repeat(auto-fit, minmax( 280px, 1fr) );
   gap: 24px;
 }
 
 @keyframes fadeInUp {
-
-from {
-  transform: translateY(30px);
-
-  opacity: 0;
-}
-
-to {
-  transform: translateY(0);
-
-  opacity: 1;
-}
-
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @media(max-width: 768px) {
