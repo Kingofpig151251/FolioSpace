@@ -1,5 +1,3 @@
-/* 列表式导航样式 */
-
 .nav-list {
   position: fixed;
   z-index: 999;
@@ -16,7 +14,6 @@
   transform: scale(1);
 
   opacity: 0.95;
-
   border: 1px solid var(--border-medium);
   border-radius: 12px;
   background: var(--bg-card);
@@ -25,8 +22,6 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
-
-/* 隐藏状态 - 缩小到页面真正的右下角 */
 
 .nav-list.hidden {
   right: 20px;
@@ -42,8 +37,6 @@
 
   opacity: 0;
 }
-
-/* 显示状态 - 从右下角扩展到正常位置 */
 
 .nav-list.visible {
   right: 30px;
@@ -81,6 +74,7 @@
 }
 
 /* 暗主题下的特殊效果 */
+
 [data-theme="dark"] .nav-header {
   background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
 }
@@ -90,6 +84,7 @@
 }
 
 /* 暗主题下的hover效果 */
+
 [data-theme="dark"] .nav-header:hover {
   background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
 }
@@ -193,6 +188,7 @@
 }
 
 /* 暗主题下的hover效果 */
+
 [data-theme="dark"] .nav-item:hover {
   color: #FFFFFF;
   background: rgba(99, 102, 241, 0.15);
@@ -209,6 +205,7 @@
 }
 
 /* 暗主题下的活跃状态 */
+
 [data-theme="dark"] .nav-item.active {
   color: #FFFFFF;
   background: rgba(99, 102, 241, 0.2);
@@ -228,6 +225,7 @@
 }
 
 /* 暗主题下的特殊效果 */
+
 [data-theme="dark"] .nav-item.active::before {
   box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
 }
@@ -254,6 +252,7 @@
 }
 
 /* 暗主题下的图标hover */
+
 [data-theme="dark"] .nav-item:hover .nav-icon {
   color: #FFFFFF;
 }
@@ -263,6 +262,7 @@
 }
 
 /* 暗主题下的活跃图标 */
+
 [data-theme="dark"] .nav-item.active .nav-icon {
   color: #FFFFFF;
 }
@@ -290,6 +290,7 @@
 }
 
 /* 暗主题下的文字hover */
+
 [data-theme="dark"] .nav-item:hover .nav-text {
   color: #FFFFFF;
 }
@@ -301,6 +302,7 @@
 }
 
 /* 暗主题下的活跃文字 */
+
 [data-theme="dark"] .nav-item.active .nav-text {
   color: #FFFFFF;
 }
@@ -356,6 +358,7 @@
 }
 
 /* 暗主题下的更多按钮 */
+
 [data-theme="dark"] .nav-more {
   background: rgba(99, 102, 241, 0.05);
 }

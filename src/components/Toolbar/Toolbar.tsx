@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './Toolbar.css';
 
 const Toolbar = () => {
@@ -7,7 +7,8 @@ const Toolbar = () => {
 
   useEffect(() => {
     // 从本地存储读取主题设置，默认为明亮主题
-    const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
+    const savedTheme =
+      (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
     setTheme(savedTheme);
     applyTheme(savedTheme);
   }, []);
@@ -73,7 +74,11 @@ const Toolbar = () => {
       >
         <i className={`fas ${isAutoplay ? 'fa-pause' : 'fa-play'}`}></i>
       </button>
-      <button className="toolbar-btn" onClick={toggleMiniMap} title="展开/收起地图">
+      <button
+        className="toolbar-btn"
+        onClick={toggleMiniMap}
+        title="展开/收起地图"
+      >
         <i className="fas fa-map"></i>
       </button>
       <button
