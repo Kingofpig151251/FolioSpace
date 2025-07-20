@@ -1,0 +1,43 @@
+/* 导航控制样式 */
+
+.navigation {
+  position: fixed;
+  z-index: 1000;
+  bottom: 30px;
+  left: 50%;
+
+  display: flex;
+
+  transform: translateX(-50%);
+
+  gap: 12px;
+}
+
+.nav-btn {
+  font-size: 1.1em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  color: #101010;
+  border: 1px solid rgba(16, 16, 16, 0.1);
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(16, 16, 16, 0.1);
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+
+  color: #FFFFFF;
+  border-color: #1B29FF;
+  background: #1B29FF;
+  box-shadow: 0 4px 15px rgba(27, 41, 255, 0.3);
+}

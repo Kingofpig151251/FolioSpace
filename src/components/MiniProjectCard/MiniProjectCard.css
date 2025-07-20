@@ -1,0 +1,154 @@
+.mini-project-card {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 20px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  border: 1px solid rgba(16, 16, 16, 0.05);
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(16, 16, 16, 0.08);
+}
+
+.mini-project-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(27, 41, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(27, 41, 255, 0.15);
+}
+
+.mini-project-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  height: 3px;
+
+  content: '';
+  transition: transform 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+
+  background: linear-gradient(90deg, #1B29FF, #0A1FE6);
+}
+
+.mini-project-card:hover::before {
+  transform: scaleX(1);
+}
+
+.mini-project-header {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 12px;
+
+  gap: 12px;
+}
+
+.mini-project-icon {
+  font-size: 1.2em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  transition: all 0.3s ease;
+
+  color: #1B29FF;
+  border-radius: 8px;
+  background: rgba(27, 41, 255, 0.1);
+}
+
+.mini-project-card:hover .mini-project-icon {
+  transform: scale(1.1);
+
+  color: #FFFFFF;
+  background: #1B29FF;
+}
+
+.mini-project-title {
+  font-size: 1.1em;
+  font-weight: 600;
+
+  flex: 1;
+
+  margin: 0;
+
+  color: #101010;
+}
+
+.mini-project-status {
+  font-size: 0.7em;
+  font-weight: 600;
+
+  margin-left: auto;
+  padding: 4px 8px;
+
+  border-radius: 12px;
+}
+
+.mini-status-completed {
+  color: #1B29FF;
+  background: rgba(27, 41, 255, 0.1);
+}
+
+.mini-status-progress {
+  color: #101010;
+  background: rgba(16, 16, 16, 0.1);
+}
+
+.mini-project-description {
+  font-size: 0.85em;
+  line-height: 1.5;
+
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+
+  margin-bottom: 12px;
+
+  color: #666666;
+
+  -webkit-line-clamp: 2;
+}
+
+.mini-project-tech {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 4px;
+}
+
+.mini-tech-tag {
+  font-size: 0.7em;
+  font-weight: 500;
+
+  padding: 2px 6px;
+
+  transition: all 0.3s ease;
+
+  color: #666666;
+  border-radius: 4px;
+  background: #F6F6F6;
+}
+
+.mini-project-card:hover .mini-tech-tag {
+  color: #1B29FF;
+  background: rgba(27, 41, 255, 0.1);
+}
+
+/* 响应式调整 */
+
+@media(max-width: 768px) {
+  .mini-project-card {
+    padding: 16px;
+  }
+}
