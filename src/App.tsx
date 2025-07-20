@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './App.css';
 import MiniMap from './components/MiniMap/MiniMap';
-import Navigation from './components/Navigation/Navigation';
+import Toolbar from './components/Toolbar/Toolbar';
 import ProgressBar from './components/ProgressBar/ProgressBar';
 import ProjectCard from './components/ProjectCard/ProjectCard';
 import { projectsData } from './constants/projectsData';
@@ -117,12 +117,11 @@ function App() {
       <div
         id="impress"
         data-transition-duration="1000"
-        data-width="1024"
-        data-height="768"
+        // data-width="1024"
+        // data-height="768"
         data-max-scale="3"
         data-min-scale="0"
         data-perspective="1000"
-        data-autoplay="7"
       >
         <TitleSlide />
 
@@ -143,7 +142,7 @@ function App() {
       </div>
 
       <MiniMap />
-      <Navigation />
+      <Toolbar />
     </div>
   );
 }

@@ -1,5 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+:root {
+  /* 明主题配色 */
+  --bg-primary: #F6F6F6;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --text-primary: #101010;
+  --text-secondary: #666666;
+  --text-hint: #666666;
+  --accent-primary: #1B29FF;
+  --accent-hover: #0A1FE6;
+  --border-light: rgba(16, 16, 16, 0.05);
+  --border-medium: rgba(16, 16, 16, 0.1);
+  --border-strong: rgba(16, 16, 16, 0.2);
+  --shadow-light: rgba(16, 16, 16, 0.1);
+  --shadow-medium: rgba(16, 16, 16, 0.15);
+  --shadow-strong: rgba(16, 16, 16, 0.2);
+  --tech-tag-bg: #F6F6F6;
+  --tech-tag-border: rgba(16, 16, 16, 0.1);
+  --bg-gradient-1: rgba(27, 41, 255, 0.03);
+  --bg-gradient-2: rgba(27, 41, 255, 0.02);
+}
+
+/* 暗主题配色 */
+[data-theme="dark"] {
+  --bg-primary: #0F0F0F;
+  --bg-secondary: rgba(24, 24, 27, 0.95);
+  --bg-card: rgba(24, 24, 27, 0.95);
+  --text-primary: #E0E0E0;
+  --text-secondary: #A1A1AA;
+  --text-hint: #A1A1AA;
+  --accent-primary: #6366F1;
+  --accent-hover: #4F46E5;
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --shadow-light: rgba(0, 0, 0, 0.3);
+  --shadow-medium: rgba(0, 0, 0, 0.4);
+  --shadow-strong: rgba(0, 0, 0, 0.5);
+  --tech-tag-bg: rgba(39, 39, 42, 0.6);
+  --tech-tag-border: rgba(255, 255, 255, 0.1);
+  --bg-gradient-1: rgba(99, 102, 241, 0.05);
+  --bg-gradient-2: rgba(139, 92, 246, 0.03);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,9 +54,10 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   overflow: hidden;
   margin: 0;
-  background: #F6F6F6;
+  background: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .App {
@@ -22,8 +67,9 @@ body {
   width: 100vw;
   height: 100vh;
   min-height: 100vh;
-  color: #101010;
-  background: #F6F6F6;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .App::before {
@@ -35,7 +81,9 @@ body {
   height: 100%;
   content: '';
   animation: float 8s ease-in-out infinite;
-  background: radial-gradient(circle at 25% 25%, rgba( 27, 41, 255, 0.03) 0%, transparent 50%) , radial-gradient( circle at 75% 75%, rgba( 27, 41, 255, 0.02) 0%, transparent 50%);
+  background:
+    radial-gradient(circle at 25% 25%, var(--bg-gradient-1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, var(--bg-gradient-2) 0%, transparent 50%);
 }
 
 @keyframes float {
@@ -54,23 +102,26 @@ body {
   position: relative;
   width: 1000px;
   padding: 40px;
-  border: 1px solid rgba(16, 16, 16, 0.05);
+  border: 1px solid var(--border-light);
   border-radius: 16px;
-  background: #FFFFFF;
-  box-shadow: 0 8px 32px rgba(16, 16, 16, 0.1);
+  background: var(--bg-card);
+  box-shadow: 0 8px 32px var(--shadow-light);
+  transition: all 0.3s ease, opacity 1s, visibility 1s, transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Initially hide all steps */
   margin: 0;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
 
-  /* Smooth transitions for all state changes */
-  -webkit-transition: opacity 1s, visibility 1s, transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-  -moz-transition: opacity 1s, visibility 1s, transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-  -ms-transition: opacity 1s, visibility 1s, transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-  -o-transition: opacity 1s, visibility 1s, transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: opacity 1s, visibility 1s, transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+/* 暗主题下的特殊效果 */
+[data-theme="dark"] .step {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 8px 32px var(--shadow-light),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 /* When impress is enabled, all steps are faded by default */
@@ -97,8 +148,15 @@ body {
 /* Hover effect for active step */
 .impress-enabled .step.active:hover {
   transform: scale(1.01) translateZ(0);
-  border-color: rgba(27, 41, 255, 0.2);
-  box-shadow: 0 12px 40px rgba(16, 16, 16, 0.15);
+  border-color: var(--accent-primary);
+  box-shadow: 0 12px 40px var(--shadow-medium);
+}
+
+/* 暗主题下的特殊hover效果 */
+[data-theme="dark"] .impress-enabled .step.active:hover {
+  box-shadow:
+    0 12px 40px var(--shadow-medium),
+    0 0 0 1px rgba(99, 102, 241, 0.2);
 }
 
 /* Overview mode - all steps are visible and clickable */
@@ -112,20 +170,18 @@ body {
 .impress-on-overview .step:hover {
   opacity: 1;
   transform: scale(1.05) translateZ(0);
-  box-shadow: 0 16px 48px rgba(16, 16, 16, 0.2);
+  box-shadow: 0 16px 48px var(--shadow-strong);
 }
 
 .impress-on-overview .step.active {
   opacity: 1;
-  border-color: rgba(27, 41, 255, 0.4);
+  border-color: var(--accent-primary);
 }
 
 /* Hide overview step by default */
 #overview {
   display: none;
 }
-
-/* Remove the future and present classes - only active matters */
 
 /* Scale adjustments for better visibility */
 .impress-enabled .step {
@@ -134,7 +190,7 @@ body {
 
 /* Smoother fade transitions for slide content */
 .step * {
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out, color 0.3s ease;
 }
 
 /* Only active slide has full opacity content */
@@ -158,7 +214,7 @@ body {
 .title-slide {
   position: relative;
   text-align: center;
-  background: #FFFFFF;
+  background: var(--bg-card);
 }
 
 .title-slide h1 {
@@ -166,20 +222,28 @@ body {
   font-weight: 700;
   margin-bottom: 24px;
   animation: slideInUp 0.8s ease-out;
-  color: #1B29FF;
+  color: var(--accent-primary);
+  transition: color 0.3s ease;
+}
+
+/* 暗主题下的发光效果 */
+[data-theme="dark"] .title-slide h1 {
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
 }
 
 .title-slide p {
   font-size: 1.3em;
   margin-bottom: 32px;
   animation: slideInUp 0.8s ease-out 0.2s both;
-  color: #101010;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .title-slide .scroll-hint {
   font-size: 0.9em;
   animation: pulse 2s infinite, slideInUp 0.8s ease-out 0.4s both;
-  color: #666666;
+  color: var(--text-hint);
+  transition: color 0.3s ease;
 }
 
 @keyframes slideInUp {
@@ -212,13 +276,20 @@ body {
   font-weight: 700;
   margin-bottom: 16px;
   animation: slideInUp 0.8s ease-out;
-  color: #1B29FF;
+  color: var(--accent-primary);
+  transition: color 0.3s ease;
+}
+
+/* 暗主题下的发光效果 */
+[data-theme="dark"] .overview-title h1 {
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
 }
 
 .overview-title p {
   font-size: 1.1em;
   animation: slideInUp 0.8s ease-out 0.2s both;
-  color: #666666;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .overview-grid {

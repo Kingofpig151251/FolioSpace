@@ -15,16 +15,15 @@
   transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) , opacity 0.4s ease, bottom 0.5s cubic-bezier( 0.68, -0.55, 0.265, 1.55) , right 0.5s cubic-bezier( 0.68, -0.55, 0.265, 1.55) , box-shadow 0.3s ease;
   transform: scale(1);
 
-  opacity: 0.9;
+  opacity: 0.95;
 
-  /* border: 2px solid rgba(27, 41, 255, 0.2); */
-
+  border: 1px solid var(--border-medium);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 8px 32px rgba(16, 16, 16, 0.15);
+  background: var(--bg-card);
+  box-shadow: 0 8px 32px var(--shadow-light);
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 /* 隐藏状态 - 缩小到页面真正的右下角 */
@@ -58,7 +57,7 @@
   transform-origin: bottom right;
   pointer-events: auto;
 
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .nav-header {
@@ -77,12 +76,22 @@
   transition: all 0.3s ease;
 
   color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: #1B29FF;
+  border-bottom: 1px solid var(--border-medium);
+  background: var(--accent-primary);
+}
+
+/* 暗主题下的特殊效果 */
+[data-theme="dark"] .nav-header {
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
 }
 
 .nav-header:hover {
-  background: #0A1FE6;
+  background: var(--accent-hover);
+}
+
+/* 暗主题下的hover效果 */
+[data-theme="dark"] .nav-header:hover {
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
 }
 
 .nav-header span {
@@ -100,7 +109,7 @@
 
   opacity: 0.9;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .nav-toggle {
@@ -147,16 +156,16 @@
 }
 
 .nav-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--border-light);
 }
 
 .nav-content::-webkit-scrollbar-thumb {
   border-radius: 2px;
-  background: #ccc;
+  background: var(--border-strong);
 }
 
 .nav-content::-webkit-scrollbar-thumb:hover {
-  background: #999;
+  background: var(--accent-primary);
 }
 
 .nav-item {
@@ -170,7 +179,8 @@
   cursor: pointer;
   transition: all 0.3s ease;
 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .nav-item:last-child {
@@ -178,9 +188,14 @@
 }
 
 .nav-item:hover {
-  /* transform: translateX(2px); */
+  color: var(--accent-primary);
+  background: var(--tech-tag-bg);
+}
 
-  background: rgba(27, 41, 255, 0.08);
+/* 暗主题下的hover效果 */
+[data-theme="dark"] .nav-item:hover {
+  color: #FFFFFF;
+  background: rgba(99, 102, 241, 0.15);
 }
 
 /* 简化激活项目样式 */
@@ -188,8 +203,15 @@
 .nav-item.active {
   font-weight: 600;
 
-  border-left: 3px solid #1B29FF;
-  background: rgba(27, 41, 255, 0.1);
+  color: var(--accent-primary);
+  border-left: 3px solid var(--accent-primary);
+  background: var(--tech-tag-bg);
+}
+
+/* 暗主题下的活跃状态 */
+[data-theme="dark"] .nav-item.active {
+  color: #FFFFFF;
+  background: rgba(99, 102, 241, 0.2);
 }
 
 .nav-item.active::before {
@@ -202,8 +224,12 @@
 
   content: '';
 
-  border-radius: 0 2px 2px 0;
-  background: #1B29FF;
+  background: var(--accent-primary);
+}
+
+/* 暗主题下的特殊效果 */
+[data-theme="dark"] .nav-item.active::before {
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
 }
 
 .nav-icon {
@@ -220,19 +246,29 @@
 
   transition: all 0.3s ease;
 
-  color: #1B29FF;
+  color: var(--accent-primary);
 }
 
 .nav-item:hover .nav-icon {
-  color: #0A1FE6;
+  color: var(--accent-primary);
+}
+
+/* 暗主题下的图标hover */
+[data-theme="dark"] .nav-item:hover .nav-icon {
+  color: #FFFFFF;
 }
 
 .nav-item.active .nav-icon {
-  color: #0A1FE6;
+  color: var(--accent-primary);
+}
+
+/* 暗主题下的活跃图标 */
+[data-theme="dark"] .nav-item.active .nav-icon {
+  color: #FFFFFF;
 }
 
 .nav-item.in-progress .nav-icon {
-  color: #666666;
+  color: var(--text-secondary);
 }
 
 .nav-text {
@@ -246,21 +282,31 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 
-  color: #333;
+  color: var(--text-primary);
 }
 
 .nav-item:hover .nav-text {
-  color: #1B29FF;
+  color: var(--accent-primary);
+}
+
+/* 暗主题下的文字hover */
+[data-theme="dark"] .nav-item:hover .nav-text {
+  color: #FFFFFF;
 }
 
 .nav-item.active .nav-text {
   font-weight: 600;
 
-  color: #1B29FF;
+  color: var(--accent-primary);
+}
+
+/* 暗主题下的活跃文字 */
+[data-theme="dark"] .nav-item.active .nav-text {
+  color: #FFFFFF;
 }
 
 .nav-item.in-progress .nav-text {
-  color: #666666;
+  color: var(--text-secondary);
 }
 
 .nav-status {
@@ -279,11 +325,11 @@
 }
 
 .nav-item.completed .nav-status {
-  color: #22c55e;
+  color: #10B981;
 }
 
 .nav-item.in-progress .nav-status {
-  color: #f59e0b;
+  color: #F59E0B;
 }
 
 .nav-more {
@@ -299,14 +345,24 @@
   cursor: pointer;
   transition: all 0.3s ease;
 
-  color: #666;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(27, 41, 255, 0.03);
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-light);
+  background: var(--tech-tag-bg);
 }
 
 .nav-more:hover {
-  color: #1B29FF;
-  background: rgba(27, 41, 255, 0.08);
+  color: var(--accent-primary);
+  background: var(--bg-secondary);
+}
+
+/* 暗主题下的更多按钮 */
+[data-theme="dark"] .nav-more {
+  background: rgba(99, 102, 241, 0.05);
+}
+
+[data-theme="dark"] .nav-more:hover {
+  color: #6366F1;
+  background: rgba(99, 102, 241, 0.15);
 }
 
 .nav-more i {
