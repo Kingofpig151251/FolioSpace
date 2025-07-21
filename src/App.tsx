@@ -11,7 +11,7 @@ const TitleSlide = () => {
   return (
     <div
       id="title"
-      className="step title-slide active"
+      className="step title-slide"
       data-x="0"
       data-y="0"
       data-z="0"
