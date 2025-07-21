@@ -1,16 +1,29 @@
 /* TitleSlide specific styles */
 
+#title:not(.step-processed) {
+  visibility: visible;
+
+  transform: scale(1) translateZ( 0);
+  pointer-events: auto;
+
+  opacity: 1;
+}
+
 .title-slide {
-  padding: 40px;
+  position: relative;
+
+  margin: 20px;
+  padding: 60px 40px;
 
   text-align: center;
 
-  color: white;
+  border-radius: 20px;
+  background: var(--bg-card);
+  box-shadow: 0 4px 32px var(--shadow-light);
 }
 
 .profile-section {
-  max-width: 600px;
-  margin: 0 auto;
+  margin-bottom: 40px;
 }
 
 .avatar-container {
@@ -18,90 +31,110 @@
 
   display: inline-block;
 
-  margin-bottom: 30px;
+  margin-bottom: 24px;
+
+  animation: slideInUp 0.8s ease-out;
 }
 
 .profile-avatar {
   width: 120px;
   height: 120px;
 
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 
-  border: 4px solid rgba(255, 255, 255, 0.2);
+  border: 4px solid var(--accent-primary);
   border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(27, 41, 255, 0.2);
+
+  object-fit: cover;
 }
 
 .profile-avatar:hover {
   transform: scale(1.05);
+
+  box-shadow: 0 12px 32px rgba(27, 41, 255, 0.3);
 }
 
 .status-indicator {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 8px;
+  bottom: 8px;
 
   width: 20px;
   height: 20px;
 
-  animation: pulse 2s infinite;
+  animation: pulse-dot 2s infinite;
 
-  border: 3px solid white;
+  border: 3px solid var(--bg-card);
   border-radius: 50%;
-  background: #00ff88;
+  background: #10B981;
 }
 
-@keyframes pulse {
+@keyframes pulse-dot {
 
-0% {
-  box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
-}
-
-70% {
-  box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
-}
-
+0%,
 100% {
-  box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+}
+
+50% {
+  box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
 }
 
 }
 
 .title-slide h1 {
   font-size: 3.5em;
+  font-weight: 700;
 
-  margin: 0 0 10px 0;
+  margin-bottom: 12px;
 
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
+  transition: color 0.3s ease;
+  animation: slideInUp 0.8s ease-out 0.1s both;
 
-  -webkit-text-fill-color: transparent;
+  color: var(--accent-primary);
 }
 
-.real-name {
-  font-size: 1.8em;
+.title-slide .real-name {
+  font-size: 1.5em;
+  font-weight: 500;
 
-  margin: 0 0 10px 0;
+  margin-bottom: 16px;
 
-  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease;
+  animation: slideInUp 0.8s ease-out 0.2s both;
+
+  color: var(--text-secondary);
 }
 
-.job-title {
+/* 暗主题下的发光效果 */
+
+[data-theme="dark"] .title-slide h1 {
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+.title-slide .job-title {
   font-size: 1.3em;
   font-weight: 500;
 
-  margin: 0 0 15px 0;
+  margin-bottom: 12px;
 
-  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.3s ease;
+  animation: slideInUp 0.8s ease-out 0.3s both;
+
+  color: var(--text-primary);
 }
 
-.bio {
+.title-slide .bio {
   font-size: 1.1em;
   line-height: 1.6;
 
-  margin: 0 0 40px 0;
+  margin-bottom: 32px;
 
-  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s ease;
+  animation: slideInUp 0.8s ease-out 0.4s both;
+
+  color: var(--text-secondary);
 }
 
 .contact-links {
@@ -109,37 +142,44 @@
   flex-wrap: wrap;
   justify-content: center;
 
-  margin-bottom: 50px;
+  margin-bottom: 32px;
 
-  gap: 15px;
+  animation: slideInUp 0.8s ease-out 0.5s both;
+
+  gap: 16px;
 }
 
 .contact-link {
+  font-size: 0.9em;
+  font-weight: 500;
+
   position: relative;
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
+  min-width: 100px;
   padding: 12px 20px;
 
   transition: all 0.3s ease;
   text-decoration: none;
 
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  border: 1px solid var(--tech-tag-border);
   border-radius: 25px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--tech-tag-bg);
 
   gap: 8px;
-  backdrop-filter: blur(10px);
 }
 
 .contact-link:hover {
   transform: translateY(-2px);
 
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  color: white;
+  border-color: var(--accent-primary);
+  background: var(--accent-primary);
+  box-shadow: 0 8px 20px var(--shadow-medium);
 }
 
 .contact-link i {
@@ -152,23 +192,25 @@
 
 .wechat-qr {
   position: absolute;
-  z-index: 1000;
+  z-index: 10;
   top: 100%;
   left: 50%;
 
   visibility: hidden;
 
-  min-width: 200px;
-  margin-top: 10px;
-  padding: 20px;
+  min-width: 160px;
+  margin-top: 8px;
+  padding: 16px;
 
   transition: all 0.3s ease;
   transform: translateX(-50%);
+  text-align: center;
 
   opacity: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid var(--border-medium);
+  border-radius: 12px;
+  background: var(--bg-card);
+  box-shadow: 0 8px 32px var(--shadow-strong);
 }
 
 .wechat-trigger:hover .wechat-qr {
@@ -177,61 +219,87 @@
   opacity: 1;
 }
 
+.wechat-qr img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 8px;
+
+  border-radius: 8px;
+}
+
 .qr-placeholder {
+  padding: 16px;
+
   text-align: center;
 
-  color: white;
+  border: 2px dashed var(--border-medium);
+  border-radius: 8px;
+  background: var(--tech-tag-bg);
 }
 
 .qr-placeholder i {
   font-size: 2em;
 
-  margin-bottom: 10px;
+  display: block;
 
-  color: #07c160;
+  margin-bottom: 8px;
+
+  color: var(--accent-primary);
 }
 
 .qr-placeholder p {
+  font-size: 0.8em;
+
+  margin: 4px 0;
+
+  color: var(--text-secondary);
+}
+
+.qr-placeholder .qr-note {
+  font-size: 0.7em;
+  font-style: italic;
+
+  color: var(--text-hint);
+}
+
+/* 修复scroll-hint居中问题 */
+
+.title-slide .scroll-hint {
   font-size: 0.9em;
 
-  margin: 5px 0;
+  margin-top: 20px;
+
+  transition: color 0.3s ease;
+  animation: pulse 2s infinite;
+  text-align: center;
+
+  color: var(--text-hint);
 }
 
-.qr-note {
-  font-size: 0.8em !important;
+@keyframes slideInUp {
 
-  color: rgba(255, 255, 255, 0.6);
+from {
+  transform: translateY(30px);
+
+  opacity: 0;
 }
 
-.scroll-hint {
-  font-size: 1em;
+to {
+  transform: translateY(0);
 
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-
-  transform: translateX(-50%);
-  animation: bounce 2s infinite;
-
-  color: rgba(255, 255, 255, 0.6);
+  opacity: 1;
 }
 
-@keyframes bounce {
+}
+@keyframes pulse {
 
 0%,
-20%,
-50%,
-80%,
 100% {
-  transform: translateX(-50%) translateY( 0);
+  opacity: 0.6;
 }
 
-40% {
-  transform: translateX(-50%) translateY( -10px);
-}
-
-60% {
-  transform: translateX(-50%) translateY( -5px);
+50% {
+  opacity: 1;
 }
 
 }
@@ -240,37 +308,56 @@
 
 @media(max-width: 768px) {
   .title-slide {
-    padding: 20px;
+    margin: 10px;
+    padding: 40px 20px;
   }
 
   .title-slide h1 {
     font-size: 2.5em;
   }
 
-  .real-name {
-    font-size: 1.4em;
+  .title-slide .real-name {
+    font-size: 1.2em;
   }
 
-  .job-title {
+  .title-slide .job-title {
     font-size: 1.1em;
   }
 
-  .bio {
+  .title-slide .bio {
     font-size: 1em;
-  }
-
-  .contact-links {
-    gap: 10px;
-  }
-
-  .contact-link {
-    font-size: 0.9em;
-
-    padding: 10px 16px;
   }
 
   .profile-avatar {
     width: 100px;
     height: 100px;
+  }
+
+  .contact-links {
+    gap: 12px;
+  }
+
+  .contact-link {
+    font-size: 0.8em;
+
+    min-width: 80px;
+    padding: 10px 16px;
+  }
+
+  .wechat-qr {
+    min-width: 140px;
+  }
+
+  .wechat-qr img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .qr-placeholder {
+    padding: 12px;
+  }
+
+  .qr-placeholder i {
+    font-size: 1.5em;
   }
 }
