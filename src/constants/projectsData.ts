@@ -1,8 +1,9 @@
-import { Project } from '../types/global';
+import { Project } from '../types/project';
+import { SLIDE_IDS } from './slideIds';
 
 export const projectsData: Project[] = [
   {
-    id: 'gwitter',
+    id: SLIDE_IDS.GWITTER,
     name: 'Gwitter',
     title: 'Gwitter',
     icon: 'fab fa-github',
@@ -22,7 +23,7 @@ export const projectsData: Project[] = [
     layout: 'standard',
   },
   {
-    id: 'homepage',
+    id: SLIDE_IDS.HOMEPAGE,
     name: 'Home',
     title: 'HomePage',
     icon: 'fas fa-home',
@@ -42,7 +43,7 @@ export const projectsData: Project[] = [
     layout: 'reverse',
   },
   {
-    id: 'gallery',
+    id: SLIDE_IDS.GALLERY,
     name: 'Gallery',
     title: 'AnimatedGallery',
     icon: 'fas fa-images',
@@ -66,7 +67,7 @@ export const projectsData: Project[] = [
     layout: 'standard',
   },
   {
-    id: 'termfolio',
+    id: SLIDE_IDS.TERMFOLIO,
     name: 'Terminal',
     title: 'TermFolio',
     icon: 'fas fa-terminal',
@@ -86,7 +87,7 @@ export const projectsData: Project[] = [
     layout: 'reverse',
   },
   {
-    id: 'thinking',
+    id: SLIDE_IDS.THINKING,
     name: '思考',
     title: '思考的价值社群',
     icon: 'fas fa-brain',
@@ -110,7 +111,7 @@ export const projectsData: Project[] = [
     layout: 'standard',
   },
   {
-    id: 'scrcpy',
+    id: SLIDE_IDS.SCRCPY,
     name: 'scrcpy',
     title: 'scrcpy-gui',
     icon: 'fas fa-mobile-alt',
@@ -134,7 +135,7 @@ export const projectsData: Project[] = [
     layout: 'reverse',
   },
   {
-    id: 'blog',
+    id: SLIDE_IDS.BLOG,
     name: '博客',
     title: '博客',
     icon: 'fas fa-blog',
@@ -154,7 +155,7 @@ export const projectsData: Project[] = [
     layout: 'standard',
   },
   {
-    id: 'italking',
+    id: SLIDE_IDS.ITALKING,
     name: 'AI对话',
     title: 'italking',
     icon: 'fas fa-robot',
@@ -170,7 +171,7 @@ export const projectsData: Project[] = [
     layout: 'reverse',
   },
   {
-    id: 'newsletter',
+    id: SLIDE_IDS.NEWSLETTER,
     name: '周刊',
     title: 'newsletter',
     icon: 'fas fa-newspaper',
@@ -186,7 +187,7 @@ export const projectsData: Project[] = [
     layout: 'standard',
   },
   {
-    id: 'projects',
+    id: SLIDE_IDS.PROJECTS,
     name: '项目页',
     title: '项目页',
     icon: 'fas fa-layer-group',
@@ -213,67 +214,67 @@ export const projectsData: Project[] = [
 
 export const mapData = [
   {
-    id: 'title',
+    id: SLIDE_IDS.TITLE,
     name: '首页',
     icon: 'fas fa-home',
   },
   {
-    id: 'global-overview',
+    id: SLIDE_IDS.GLOBAL_OVERVIEW,
     name: '概览',
     icon: 'fas fa-th-large',
   },
   {
-    id: 'gwitter',
+    id: SLIDE_IDS.GWITTER,
     name: 'Gwitter',
     icon: 'fab fa-github',
   },
   {
-    id: 'homepage',
+    id: SLIDE_IDS.HOMEPAGE,
     name: 'Home',
     icon: 'fas fa-home',
   },
   {
-    id: 'gallery',
+    id: SLIDE_IDS.GALLERY,
     name: 'Gallery',
     icon: 'fas fa-images',
   },
   {
-    id: 'termfolio',
+    id: SLIDE_IDS.TERMFOLIO,
     name: 'Terminal',
     icon: 'fas fa-terminal',
   },
   {
-    id: 'thinking',
+    id: SLIDE_IDS.THINKING,
     name: '思考',
     icon: 'fas fa-brain',
   },
   {
-    id: 'scrcpy',
+    id: SLIDE_IDS.SCRCPY,
     name: 'scrcpy',
     icon: 'fas fa-mobile-alt',
   },
   {
-    id: 'blog',
+    id: SLIDE_IDS.BLOG,
     name: '博客',
     icon: 'fas fa-blog',
   },
   {
-    id: 'italking',
+    id: SLIDE_IDS.ITALKING,
     name: 'AI对话',
     icon: 'fas fa-robot',
   },
   {
-    id: 'newsletter',
+    id: SLIDE_IDS.NEWSLETTER,
     name: '周刊',
     icon: 'fas fa-newspaper',
   },
   {
-    id: 'projects',
+    id: SLIDE_IDS.PROJECTS,
     name: '项目页',
     icon: 'fas fa-layer-group',
   },
   {
-    id: 'conclusion',
+    id: SLIDE_IDS.CONCLUSION,
     name: '结束',
     icon: 'fas fa-rocket',
   },

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { mapData } from '../../constants/projectsData';
+import { SLIDE_IDS } from '../../constants/slideIds';
 import './MiniMap.css';
 
 interface NavItemProps {
@@ -26,7 +27,7 @@ const MiniMap = () => {
   const [activeNodeId, setActiveNodeId] = useState<string | undefined>(
     location.hash.slice(1)
       ? (location.hash.slice(1) as string).replace('/', '')
-      : 'title',
+      : SLIDE_IDS.TITLE,
   );
   const miniMapRef = useRef<HTMLDivElement>(null);
   const navContentRef = useRef<HTMLDivElement>(null);

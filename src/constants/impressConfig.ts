@@ -1,0 +1,6 @@
+export const IMPRESS_CONFIG = {
+  TRANSITION_DURATION: '1000',
+  MAX_SCALE: '3',
+  MIN_SCALE: '0',
+  PERSPECTIVE: '1000',
+} as const;

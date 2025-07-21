@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { SLIDE_IDS } from '../../constants/slideIds';
 import './Toolbar.css';
 
 const Toolbar = () => {
@@ -37,7 +38,7 @@ const Toolbar = () => {
 
   const handleOverview = () => {
     if (window.impress) {
-      window.impress().goto('overview');
+      window.impress().goto(SLIDE_IDS.OVERVIEW);
     }
   };
 

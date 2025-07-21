@@ -1,0 +1,276 @@
+/* TitleSlide specific styles */
+
+.title-slide {
+  padding: 40px;
+
+  text-align: center;
+
+  color: white;
+}
+
+.profile-section {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.avatar-container {
+  position: relative;
+
+  display: inline-block;
+
+  margin-bottom: 30px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+
+  transition: transform 0.3s ease;
+
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+}
+
+.status-indicator {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+
+  width: 20px;
+  height: 20px;
+
+  animation: pulse 2s infinite;
+
+  border: 3px solid white;
+  border-radius: 50%;
+  background: #00ff88;
+}
+
+@keyframes pulse {
+
+0% {
+  box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+}
+
+70% {
+  box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+}
+
+100% {
+  box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+}
+
+}
+
+.title-slide h1 {
+  font-size: 3.5em;
+
+  margin: 0 0 10px 0;
+
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.real-name {
+  font-size: 1.8em;
+
+  margin: 0 0 10px 0;
+
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.job-title {
+  font-size: 1.3em;
+  font-weight: 500;
+
+  margin: 0 0 15px 0;
+
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.bio {
+  font-size: 1.1em;
+  line-height: 1.6;
+
+  margin: 0 0 40px 0;
+
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin-bottom: 50px;
+
+  gap: 15px;
+}
+
+.contact-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding: 12px 20px;
+
+  transition: all 0.3s ease;
+  text-decoration: none;
+
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+
+  gap: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.contact-link:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-link i {
+  font-size: 1.1em;
+}
+
+.wechat-trigger {
+  cursor: pointer;
+}
+
+.wechat-qr {
+  position: absolute;
+  z-index: 1000;
+  top: 100%;
+  left: 50%;
+
+  visibility: hidden;
+
+  min-width: 200px;
+  margin-top: 10px;
+  padding: 20px;
+
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+
+  opacity: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.wechat-trigger:hover .wechat-qr {
+  visibility: visible;
+
+  opacity: 1;
+}
+
+.qr-placeholder {
+  text-align: center;
+
+  color: white;
+}
+
+.qr-placeholder i {
+  font-size: 2em;
+
+  margin-bottom: 10px;
+
+  color: #07c160;
+}
+
+.qr-placeholder p {
+  font-size: 0.9em;
+
+  margin: 5px 0;
+}
+
+.qr-note {
+  font-size: 0.8em !important;
+
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.scroll-hint {
+  font-size: 1em;
+
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes bounce {
+
+0%,
+20%,
+50%,
+80%,
+100% {
+  transform: translateX(-50%) translateY( 0);
+}
+
+40% {
+  transform: translateX(-50%) translateY( -10px);
+}
+
+60% {
+  transform: translateX(-50%) translateY( -5px);
+}
+
+}
+
+/* Responsive design */
+
+@media(max-width: 768px) {
+  .title-slide {
+    padding: 20px;
+  }
+
+  .title-slide h1 {
+    font-size: 2.5em;
+  }
+
+  .real-name {
+    font-size: 1.4em;
+  }
+
+  .job-title {
+    font-size: 1.1em;
+  }
+
+  .bio {
+    font-size: 1em;
+  }
+
+  .contact-links {
+    gap: 10px;
+  }
+
+  .contact-link {
+    font-size: 0.9em;
+
+    padding: 10px 16px;
+  }
+
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+  }
+}
