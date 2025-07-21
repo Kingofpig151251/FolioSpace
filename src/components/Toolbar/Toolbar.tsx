@@ -35,6 +35,12 @@ const Toolbar = () => {
     }
   };
 
+  const handleOverview = () => {
+    if (window.impress) {
+      window.impress().goto('overview');
+    }
+  };
+
   const toggleAutoplay = () => {
     setIsAutoplay(!isAutoplay);
     console.log('Autoplay toggled:', !isAutoplay);
@@ -66,6 +72,13 @@ const Toolbar = () => {
       </button>
       <button className="toolbar-btn" onClick={handleNext} title="下一页">
         <i className="fas fa-chevron-right"></i>
+      </button>
+      <button
+        className="toolbar-btn"
+        onClick={handleOverview}
+        title="项目总览"
+      >
+        <i className="fas fa-th-large"></i>
       </button>
       <button
         className="toolbar-btn"
