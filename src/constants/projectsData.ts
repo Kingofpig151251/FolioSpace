@@ -8,7 +8,7 @@ export const projectsData: Project[] = [
     title: 'Gwitter',
     icon: 'fab fa-github',
     status: 'completed',
-    position: { x: 3000, y: 0, z: 0, rotateY: 30 },
+    position: { x: 1500, y: 0, z: 0, rotateY: 0 },
     description:
       '基于 GitHub Issues 的创新微博平台。将世界上最强大的问题追踪系统转换为个人微博，支持社交互动、多语言和无限滚动，打造独特的技术社交体验。',
     tech: ['React', 'TypeScript', 'GitHub API', 'Framer Motion', 'i18n'],
@@ -28,7 +28,7 @@ export const projectsData: Project[] = [
     title: 'HomePage',
     icon: 'fas fa-home',
     status: 'completed',
-    position: { x: 1400, y: 1400, z: 0, rotate: 15 },
+    position: { x: 1060, y: 1060, z: 200, rotateY: 45 },
     description:
       '现代优雅的个人主页，采用 WebGL 流体动画背景。高度封装的配置系统、响应式设计和流畅的页面过渡效果，总体积控制在 18.5KB 以内。',
     tech: ['Pug', 'Less', 'Gulp', 'WebGL', 'JavaScript'],
@@ -48,7 +48,7 @@ export const projectsData: Project[] = [
     title: 'AnimatedGallery',
     icon: 'fas fa-images',
     status: 'completed',
-    position: { x: 0, y: 2000, z: 0, rotateY: -30 },
+    position: { x: 0, y: 1500, z: 400, rotateY: 90 },
     description:
       '现代化的响应式照片画廊项目。支持 BlurHash 渐进加载、瀑布流布局、图片放大预览和移动端优化，提供流畅优雅的视觉体验。',
     tech: ['React', 'TypeScript', 'CSS3', 'BlurHash', 'Responsive'],
@@ -72,7 +72,7 @@ export const projectsData: Project[] = [
     title: 'TermFolio',
     icon: 'fas fa-terminal',
     status: 'completed',
-    position: { x: -1400, y: 1400, z: 0, rotate: -15 },
+    position: { x: -1060, y: 1060, z: 600, rotateY: 135 },
     description:
       '极客风格的终端式作品集展示组件。完全模拟真实终端交互体验，支持命令行操作、多命令系统和个性化配置，让技术展示更具个性。',
     tech: ['JavaScript', 'CSS3', 'Terminal UI', 'Command Line', 'NPM Package'],
@@ -92,7 +92,7 @@ export const projectsData: Project[] = [
     title: '思考的价值社群',
     icon: 'fas fa-brain',
     status: 'completed',
-    position: { x: -2000, y: 0, z: 0, rotateY: 150 },
+    position: { x: -1500, y: 0, z: 800, rotateY: 180 },
     description:
       '专注于深度思考的技术社群平台。汇聚技术人的思维碰撞与价值输出，构建高质量的技术交流生态，分享技术见解和人生感悟。',
     tech: ['Community', 'Content', 'Discussion', 'Knowledge', 'Sharing'],
@@ -116,7 +116,7 @@ export const projectsData: Project[] = [
     title: 'scrcpy-gui',
     icon: 'fas fa-mobile-alt',
     status: 'completed',
-    position: { x: -1400, y: -1400, z: 0, rotate: 165 },
+    position: { x: -1060, y: -1060, z: 1000, rotateY: 225 },
     description:
       '跨平台的 Android 设备投屏工具，基于 scrcpy 的图形化界面封装。支持设备管理、录屏、截图等功能，提供简洁易用的操作体验。',
     tech: ['Electron', 'Node.js', 'scrcpy', 'Cross-platform', 'GUI'],
@@ -140,7 +140,7 @@ export const projectsData: Project[] = [
     title: '博客',
     icon: 'fas fa-blog',
     status: 'completed',
-    position: { x: 0, y: -2000, z: 0, rotate: 180 },
+    position: { x: 0, y: -1500, z: 1200, rotateY: 270 },
     description:
       '基于 Hexo 构建的个人技术博客。自定义主题设计，支持多语言、代码高亮、评论系统和性能优化，记录技术成长和思考感悟的重要平台。',
     tech: ['Hexo', 'Node.js', 'Markdown', 'EJS', 'Less'],
@@ -160,7 +160,7 @@ export const projectsData: Project[] = [
     title: 'italking',
     icon: 'fas fa-robot',
     status: 'in-progress',
-    position: { x: 2000, y: -1400, z: 0, rotate: 30 },
+    position: { x: 1060, y: -1060, z: 1400, rotateY: 315 },
     description:
       '基于大语言模型的智能对话平台。提供多模型支持、上下文管理、自定义提示词等功能，打造高效的 AI 交互体验。',
     tech: ['React', 'TypeScript', 'AI/LLM', 'Chat', 'API'],
@@ -176,7 +176,7 @@ export const projectsData: Project[] = [
     title: 'newsletter',
     icon: 'fas fa-newspaper',
     status: 'in-progress',
-    position: { x: 2000, y: -2800, z: 0, rotate: -30 },
+    position: { x: 1500, y: 0, z: 1600, rotateY: 360 },
     description:
       '技术周刊和内容聚合平台。收集整理优质技术文章、开源项目、工具资源等，为技术人提供精选的学习资料。',
     tech: ['Content', 'Newsletter', 'Curation', 'Tech News', 'Weekly'],
@@ -192,7 +192,7 @@ export const projectsData: Project[] = [
     title: '项目页',
     icon: 'fas fa-layer-group',
     status: 'completed',
-    position: { x: 0, y: -3600, z: 0, rotate: 180 },
+    position: { x: 1060, y: 1060, z: 1800, rotateY: 405 },
     description:
       '当前所在的项目展示页面。采用 impress.js 构建的 3D 演示效果，展示个人项目作品集，提供沉浸式的浏览体验。',
     tech: ['impress.js', 'CSS3', '3D Transform', 'Animation', 'Responsive'],
