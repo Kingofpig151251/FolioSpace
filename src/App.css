@@ -155,14 +155,14 @@ body {
 
   margin: 0;
 
-  -webkit-transition: opacity 1s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  -moz-transition: opacity 1s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  -ms-transition: opacity 1s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  -o-transition: opacity 1s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: opacity 1s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  -ms-transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 /* ONLY the active step is fully visible and interactive */
@@ -171,7 +171,7 @@ body {
   transform: scale(1) translateZ( 0);
   pointer-events: auto;
 
-  opacity: 1;
+  /* 活动步骤的透明度由 JavaScript 动态控制以提供更精细的控制 */
 }
 
 /* Hover effect for active step */
@@ -196,7 +196,7 @@ body {
   transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: auto;
 
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .impress-on-overview .step:hover {
@@ -209,6 +209,18 @@ body {
 .impress-on-overview .step.active {
   opacity: 1;
   border-color: var(--accent-primary);
+}
+
+/* 确保活动步骤始终保持最高透明度 */
+.impress-enabled .step.active {
+  opacity: 1 !important;
+}
+
+/* 过渡状态的特殊样式 */
+.impress-enabled .step.transitioning {
+  transition: opacity 0.4s ease-out;
+
+  opacity: 0.4 !important;
 }
 
 /* Hide overview step by default */

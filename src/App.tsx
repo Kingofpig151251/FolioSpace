@@ -8,12 +8,138 @@ import TitleSlide from './components/TitleSlide/TitleSlide';
 import Toolbar from './components/Toolbar/Toolbar';
 import { IMPRESS_CONFIG } from './constants/impressConfig';
 import { projectsData } from './constants/projectsData';
+import { SLIDE_IDS } from './constants/slideIds';
 
 function App() {
   useEffect(() => {
+    let isOverviewMode = false;
+    let currentActiveStep: string | null = null;
+
+    const handleStepEnter = (event: Event) => {
+      const currentStepId = (event.target as Element).id;
+      currentActiveStep = currentStepId;
+
+      console.log('Entering step:', currentStepId); // 调试日志
+
+      // 检查是否进入概览模式
+      if (currentStepId === SLIDE_IDS.OVERVIEW) {
+        isOverviewMode = true;
+        resetAllStepsOpacity();
+      } else {
+        isOverviewMode = false;
+        updateSlideOpacity(currentStepId);
+      }
+    };
+
+    const handleStepLeave = (event: Event) => {
+      // 当离开一个步骤时，如果不在概览模式，添加过渡状态
+      if (!isOverviewMode) {
+        const leavingStepId = (event.target as Element).id;
+        const leavingStep = document.getElementById(leavingStepId);
+        if (leavingStep && leavingStepId !== SLIDE_IDS.OVERVIEW) {
+          leavingStep.classList.add('transitioning');
+          // 1秒后移除过渡状态，恢复正常的非活动状态
+          setTimeout(() => {
+            leavingStep.classList.remove('transitioning');
+          }, 1000);
+        }
+      }
+    };
+
+    const updateSlideOpacity = (activeStepId: string) => {
+      if (activeStepId === SLIDE_IDS.OVERVIEW) {
+        return;
+      }
+
+      const allSteps = document.querySelectorAll('.step');
+
+      allSteps.forEach((step) => {
+        const stepElement = step as HTMLElement;
+
+        stepElement.classList.remove('transitioning');
+
+        if (stepElement.id === activeStepId) {
+          // 当前活动的幻灯片保持完全不透明
+          stepElement.style.opacity = '1';
+          stepElement.style.transition = 'opacity 0.8s ease-out';
+          stepElement.style.pointerEvents = 'auto';
+        } else {
+          // 非活动幻灯片降低透明度
+          stepElement.style.opacity = '0.4';
+          stepElement.style.transition = 'opacity 0.6s ease-out';
+          stepElement.style.pointerEvents = 'none';
+        }
+      });
+    };
+
+    const resetAllStepsOpacity = () => {
+      const allSteps = document.querySelectorAll(
+        `.step:not(#${SLIDE_IDS.OVERVIEW})`,
+      );
+
+      allSteps.forEach((step) => {
+        const stepElement = step as HTMLElement;
+        stepElement.style.opacity = '1';
+        stepElement.style.transition = 'opacity 0.3s ease';
+        stepElement.style.pointerEvents = 'auto';
+      });
+    };
+
+    const handleOverviewChange = () => {
+      const impressElement = document.getElementById('impress');
+      if (impressElement) {
+        isOverviewMode = impressElement.classList.contains(
+          'impress-on-overview',
+        );
+
+        if (isOverviewMode) {
+          resetAllStepsOpacity();
+        } else {
+          // 退出概览模式时，恢复正常的透明度控制
+          const activeStep = document.querySelector('.step.active');
+          if (activeStep) {
+            updateSlideOpacity(activeStep.id);
+          }
+        }
+      }
+    };
+
+    const initializeOpacity = () => {
+      const activeStep = document.querySelector('.step.active');
+      if (activeStep) {
+        updateSlideOpacity(activeStep.id);
+      }
+    };
+
+    // 添加事件监听器
+    document.addEventListener('impress:stepenter', handleStepEnter);
+    document.addEventListener('impress:stepleave', handleStepLeave);
+
+    // 监听类名变化来检测概览模式
+    const impressElement = document.getElementById('impress');
+    let observer: MutationObserver | null = null;
+
+    if (impressElement) {
+      observer = new MutationObserver(handleOverviewChange);
+      observer.observe(impressElement, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
+    }
+
     if (window.impress) {
       window.impress().init();
     }
+
+    initializeOpacity();
+
+    return () => {
+      document.removeEventListener('impress:stepenter', handleStepEnter);
+      document.removeEventListener('impress:stepleave', handleStepLeave);
+      if (observer) {
+        observer.disconnect();
+      }
+    };
   }, []);
 
   return (
