@@ -7,7 +7,6 @@ const Toolbar = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    // 从本地存储读取主题设置，默认为明亮主题
     const savedTheme =
       (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
     setTheme(savedTheme);
@@ -68,39 +67,48 @@ const Toolbar = () => {
 
   return (
     <div className="toolbar">
-      <button className="toolbar-btn" onClick={handlePrev} title="上一页">
+      <button
+        className="toolbar-btn"
+        onClick={handlePrev}
+        data-tooltip="上一页"
+      >
         <i className="fas fa-chevron-left"></i>
       </button>
-      <button className="toolbar-btn" onClick={handleNext} title="下一页">
+      <button
+        className="toolbar-btn"
+        onClick={handleNext}
+        data-tooltip="下一页"
+      >
         <i className="fas fa-chevron-right"></i>
       </button>
       <button
         className="toolbar-btn"
         onClick={handleOverview}
-        title="项目总览"
+        data-tooltip="项目总览"
       >
         <i className="fas fa-th-large"></i>
       </button>
       <button
         className="toolbar-btn"
         onClick={toggleAutoplay}
-        title={isAutoplay ? '暂停自动播放' : '自动播放'}
+        data-tooltip={isAutoplay ? '暂停自动播放' : '自动播放'}
       >
         <i className={`fas ${isAutoplay ? 'fa-pause' : 'fa-play'}`}></i>
       </button>
       <button
         className="toolbar-btn"
         onClick={toggleMiniMap}
-        title="展开/收起地图"
+        data-tooltip="展开/收起地图"
       >
         <i className="fas fa-map"></i>
       </button>
       <button
         className="toolbar-btn theme-btn"
         onClick={toggleTheme}
-        title={getThemeTitle()}
+        data-tooltip={getThemeTitle()}
       >
         <i className={getThemeIcon()}></i>
+        <div className="theme-indicator"></div>
       </button>
     </div>
   );
