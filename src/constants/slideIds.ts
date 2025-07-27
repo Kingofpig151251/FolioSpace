@@ -6,7 +6,6 @@ export const SLIDE_IDS = {
   TERMFOLIO: 'termfolio',
   THINKING: 'thinking',
   SCRCPY: 'scrcpy',
-  BLOG: 'blog',
   ITALKING: 'italking',
   PROJECTS: 'projects',
   OVERVIEW: 'overview',

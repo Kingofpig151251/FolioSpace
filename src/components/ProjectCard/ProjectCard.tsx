@@ -6,9 +6,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
   const InfoSection = () => (
     <div className="project-info">
-      <h2>
-        <i className={project.icon}></i> {project.title}
-      </h2>
+      <h2>{project.title}</h2>
       <p className="project-description">{project.description}</p>
       <div className="project-tech">
         {project.tech.map((tech: string, index: number) => (
@@ -42,14 +40,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
   const PreviewSection = () => (
     <div className="project-preview">
-      <div className="project-image">
-        <i className={project.icon}></i>
-      </div>
-      <div
-        className={`project-status ${project.status === 'completed' ? 'status-completed' : 'status-progress'}`}
-      >
-        {project.status === 'completed' ? '已完成' : '开发中'}
-      </div>
+      <img
+        className="project-image"
+        src={project.preview}
+        alt={project.title}
+      />
     </div>
   );
 

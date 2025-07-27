@@ -16,8 +16,7 @@ export interface Project {
   id: string;
   name: string;
   title: string;
-  icon: string;
-  status: string;
+  preview: string;
   position: Position;
   description: string;
   tech: string[];
