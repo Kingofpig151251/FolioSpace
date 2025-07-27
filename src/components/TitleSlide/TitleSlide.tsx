@@ -1,8 +1,16 @@
 import { SLIDE_IDS, SLIDE_POSITIONS } from '../../constants/slideIds';
 import { USER_CONFIG } from '../../constants/userConfig';
+import { BlurFade } from '../ui/blur-fade';
 import './TitleSlide.css';
 
 const TitleSlide = () => {
+  const handleSocialClick = (url: string, type: string) => {
+    if (type === 'wechat') {
+      return;
+    }
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div
       id={SLIDE_IDS.TITLE}
@@ -11,62 +19,56 @@ const TitleSlide = () => {
       data-y={SLIDE_POSITIONS.TITLE.y}
       data-z={SLIDE_POSITIONS.TITLE.z}
     >
-      <div className="profile-section">
-        <div className="avatar-container">
-          <img
-            src={USER_CONFIG.AVATAR_URL}
-            alt={`${USER_CONFIG.NAME} Avatar`}
-            className="profile-avatar"
-          />
-          <div className="status-indicator"></div>
+      <div className="profile-container">
+        <div className="header-section">
+          <div className="greeting-section">
+            <BlurFade delay={0.15} inView>
+              <h1 className="greeting">{USER_CONFIG.GREETING}</h1>
+            </BlurFade>
+          </div>
+          <div className="avatar-section">
+            <BlurFade delay={0.15} inView>
+              <img
+                src={USER_CONFIG.AVATAR_URL}
+                alt={`${USER_CONFIG.NAME} Avatar`}
+                className="profile-avatar"
+              />
+              <div className="status-indicator"></div>
+            </BlurFade>
+          </div>
         </div>
 
-        <h1>
-          <i className="fas fa-code"></i> {USER_CONFIG.NAME}
-        </h1>
-        <h2 className="real-name">{USER_CONFIG.REAL_NAME}</h2>
-        <p className="job-title">{USER_CONFIG.JOB_TITLE}</p>
-        <p className="bio">{USER_CONFIG.BIO}</p>
+        <div className="bio-section">
+          {USER_CONFIG.BIO.map((line, index) => (
+            <BlurFade key={index} delay={0.25 * (index + 2)} inView>
+              <p className="bio-line">{line}</p>
+            </BlurFade>
+          ))}
+        </div>
 
-        <div className="contact-links">
-          {USER_CONFIG.CONTACT_LINKS.map((link, index) => {
-            if (link.isSpecial) {
-              return (
-                <div key={index} className="contact-link wechat-trigger">
-                  <i className={link.icon}></i>
-                  <span>{link.text}</span>
-                  <div className="wechat-qr">
-                    <div className="qr-placeholder">
-                      <i className={link.icon}></i>
-                      <p>微信: {USER_CONFIG.WECHAT_ID}</p>
-                      <p className="qr-note">
-                        请添加微信二维码图片到 /public/wechat-qr.png
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            }
-
-            return (
-              <a
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-link"
-              >
-                <i className={link.icon}></i>
-                <span>{link.text}</span>
-              </a>
-            );
-          })}
+        <div className="social-links">
+          {USER_CONFIG.CONTACT_LINKS.map((link, index) => (
+            <button
+              key={index}
+              onClick={() => handleSocialClick(link.url || '', link.type)}
+              className={`social-link ${link.type === 'wechat' ? 'wechat' : ''}`}
+              title={link.text}
+            >
+              <i className={link.icon}></i>
+              <span>{link.text}</span>
+              {link.type === 'wechat' && (
+                <>
+                  <img
+                    src="/assets/wechat.png"
+                    alt="微信二维码"
+                    className="wechat-qr"
+                  />
+                </>
+              )}
+            </button>
+          ))}
         </div>
       </div>
-
-      <p className="scroll-hint">
-        <i className="fas fa-mouse"></i> 使用空格键或方向键导航
-      </p>
     </div>
   );
 };

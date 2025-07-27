@@ -2,7 +2,6 @@
 
 :root {
   /* 明主题配色 */
-
   --bg-primary: #F0F2FF;
   --bg-secondary: #FFFFFF;
   --bg-tertiary: #F8F9FF;
@@ -25,7 +24,6 @@
 }
 
 /* 暗主题配色 */
-
 [data-theme="dark"] {
   --bg-primary: #0A0A0F;
   --bg-secondary: #1A1A2E;
