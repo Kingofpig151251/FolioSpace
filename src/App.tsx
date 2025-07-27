@@ -143,6 +143,8 @@ function App() {
         data-max-scale={IMPRESS_CONFIG.MAX_SCALE}
         data-min-scale={IMPRESS_CONFIG.MIN_SCALE}
         data-perspective={IMPRESS_CONFIG.PERSPECTIVE}
+        data-width={IMPRESS_CONFIG.WIDTH}
+        data-height={IMPRESS_CONFIG.HEIGHT}
       >
         <TitleSlide />
 

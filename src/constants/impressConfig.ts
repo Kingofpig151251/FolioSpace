@@ -3,4 +3,6 @@ export const IMPRESS_CONFIG = {
   MAX_SCALE: '3',
   MIN_SCALE: '0',
   PERSPECTIVE: '1000',
+  WIDTH: '1024',
+  HEIGHT: '768',
 } as const;
