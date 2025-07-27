@@ -266,3 +266,43 @@
 [data-theme="dark"] .autoplay-indicator {
   border-color: rgba(26, 26, 46, 0.95);
 }
+
+/* 地图按钮激活状态样式 */
+
+.minimap-active {
+  color: #FFFFFF !important;
+  border-color: var(--accent-primary) !important;
+  background: var(--accent-primary) !important;
+}
+
+.minimap-active:hover {
+  background: var(--accent-primary) !important;
+}
+
+/* 地图指示器 */
+
+.minimap-indicator {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+
+  width: 10px;
+  height: 10px;
+
+  animation: pulse 2s infinite;
+
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  background: #3b82f6; /* 蓝色表示地图展开中 */
+}
+
+/* 暗主题下的地图按钮样式 */
+
+[data-theme="dark"] .minimap-active {
+  background: rgba(99, 102, 241, 0.9) !important;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+[data-theme="dark"] .minimap-indicator {
+  border-color: rgba(26, 26, 46, 0.95);
+}

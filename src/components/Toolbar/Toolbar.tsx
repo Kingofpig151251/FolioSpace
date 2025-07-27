@@ -5,6 +5,7 @@ import './Toolbar.css';
 
 const Toolbar = () => {
   const [isAutoplay, setIsAutoplay] = useState(false);
+  const [isMiniMapVisible, setIsMiniMapVisible] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const autoplayTimerRef = useRef<number | null>(null);
   const autoplayIntervalRef = useRef<number>(3000);
@@ -21,6 +22,18 @@ const Toolbar = () => {
       if (autoplayTimerRef.current) {
         clearInterval(autoplayTimerRef.current);
       }
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleMiniMapToggle = () => {
+      setIsMiniMapVisible((prev) => !prev);
+    };
+
+    window.addEventListener('toggleMiniMap', handleMiniMapToggle);
+
+    return () => {
+      window.removeEventListener('toggleMiniMap', handleMiniMapToggle);
     };
   }, []);
 
@@ -150,11 +163,12 @@ const Toolbar = () => {
         {isAutoplay && <div className="autoplay-indicator"></div>}
       </button>
       <button
-        className="toolbar-btn"
+        className={`toolbar-btn ${isMiniMapVisible ? 'minimap-active' : ''}`}
         onClick={toggleMiniMap}
-        data-tooltip="展开/收起地图"
+        data-tooltip={isMiniMapVisible ? '收起地图' : '展开地图'}
       >
         <i className="fas fa-map"></i>
+        {isMiniMapVisible && <div className="minimap-indicator"></div>}
       </button>
       <button
         className="toolbar-btn theme-btn"
