@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { mapData } from '../../constants/projectsData';
 import { SLIDE_IDS } from '../../constants/slideIds';
 import './Toolbar.css';
 
 const Toolbar = () => {
   const [isAutoplay, setIsAutoplay] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const autoplayTimerRef = useRef<number | null>(null);
+  const autoplayIntervalRef = useRef<number>(3000);
 
   useEffect(() => {
     const savedTheme =
@@ -13,14 +16,56 @@ const Toolbar = () => {
     applyTheme(savedTheme);
   }, []);
 
+  useEffect(() => {
+    return () => {
+      if (autoplayTimerRef.current) {
+        clearInterval(autoplayTimerRef.current);
+      }
+    };
+  }, []);
+
   const applyTheme = (newTheme: 'light' | 'dark') => {
     const root = document.documentElement;
-
-    // 直接设置主题属性
     root.setAttribute('data-theme', newTheme);
-
-    // 保存到本地存储
     localStorage.setItem('theme', newTheme);
+  };
+
+  const getCurrentSlideIndex = (): number => {
+    const activeSlide =
+      document.querySelector('.step.present') ||
+      document.querySelector('.step.active');
+    if (activeSlide) {
+      const currentId = activeSlide.id;
+      return mapData.findIndex((item) => item.id === currentId);
+    }
+    return 0;
+  };
+
+  const goToNextSlide = () => {
+    const currentIndex = getCurrentSlideIndex();
+    const nextIndex = (currentIndex + 1) % mapData.length;
+    const nextSlideId = mapData[nextIndex].id;
+
+    if (window.impress) {
+      window.impress().goto(nextSlideId);
+    }
+  };
+
+  const startAutoplay = () => {
+    if (autoplayTimerRef.current) {
+      clearInterval(autoplayTimerRef.current);
+    }
+
+    autoplayTimerRef.current = setInterval(() => {
+      goToNextSlide();
+    }, autoplayIntervalRef.current);
+  };
+
+  const stopAutoplay = () => {
+    if (autoplayTimerRef.current) {
+      clearInterval(autoplayTimerRef.current);
+      autoplayTimerRef.current = null;
+    }
   };
 
   const handlePrev = () => {
@@ -42,8 +87,16 @@ const Toolbar = () => {
   };
 
   const toggleAutoplay = () => {
-    setIsAutoplay(!isAutoplay);
-    console.log('Autoplay toggled:', !isAutoplay);
+    const newAutoplayState = !isAutoplay;
+    setIsAutoplay(newAutoplayState);
+
+    if (newAutoplayState) {
+      startAutoplay();
+      console.log('自动播放已开启');
+    } else {
+      stopAutoplay();
+      console.log('自动播放已关闭');
+    }
   };
 
   const toggleMiniMap = () => {
@@ -89,11 +142,12 @@ const Toolbar = () => {
         <i className="fas fa-th-large"></i>
       </button>
       <button
-        className="toolbar-btn"
+        className={`toolbar-btn ${isAutoplay ? 'autoplay-active' : ''}`}
         onClick={toggleAutoplay}
         data-tooltip={isAutoplay ? '暂停自动播放' : '自动播放'}
       >
         <i className={`fas ${isAutoplay ? 'fa-pause' : 'fa-play'}`}></i>
+        {isAutoplay && <div className="autoplay-indicator"></div>}
       </button>
       <button
         className="toolbar-btn"

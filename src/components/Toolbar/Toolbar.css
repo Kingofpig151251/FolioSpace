@@ -210,3 +210,59 @@
 [data-theme="dark"] .theme-btn::after {
   border-top-color: rgba(26, 26, 46, 0.95);
 }
+
+/* 自动播放按钮样式 */
+
+.autoplay-active {
+  color: #FFFFFF !important;
+  border-color: var(--accent-primary) !important;
+  background: var(--accent-primary) !important;
+}
+
+.autoplay-active:hover {
+  background: var(--accent-primary) !important;
+}
+
+/* 自动播放指示器 */
+
+.autoplay-indicator {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+
+  width: 10px;
+  height: 10px;
+
+  animation: pulse 2s infinite;
+
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  background: #10b981; /* 绿色表示运行中 */
+}
+
+@keyframes pulse {
+
+0% {
+  transform: scale(1);
+}
+
+50% {
+  transform: scale(1.1);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+/* 暗主题下的自动播放样式 */
+
+[data-theme="dark"] .autoplay-active {
+  background: rgba(99, 102, 241, 0.9) !important;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+[data-theme="dark"] .autoplay-indicator {
+  border-color: rgba(26, 26, 46, 0.95);
+}

@@ -218,11 +218,7 @@ export const mapData = [
     name: '首页',
     icon: 'fas fa-home',
   },
-  {
-    id: SLIDE_IDS.GLOBAL_OVERVIEW,
-    name: '概览',
-    icon: 'fas fa-th-large',
-  },
+
   {
     id: SLIDE_IDS.GWITTER,
     name: 'Gwitter',
@@ -274,8 +270,8 @@ export const mapData = [
     icon: 'fas fa-layer-group',
   },
   {
-    id: SLIDE_IDS.CONCLUSION,
-    name: '结束',
-    icon: 'fas fa-rocket',
+    id: SLIDE_IDS.GLOBAL_OVERVIEW,
+    name: '概览',
+    icon: 'fas fa-th-large',
   },
 ];
