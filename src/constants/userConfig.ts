@@ -3,7 +3,6 @@ import { ContactLink } from '../types/userConfig';
 export const USER_CONFIG = {
   AVATAR_URL: '/assets/avatar.jpeg',
   NAME: 'SimonAKing',
-  GREETING: "Hey 👋, I'm SimonAKing!",
   JOB_TITLE: 'SimonAKing',
   BIO: [
     '👨‍💻 Front | Back | Left | Right | End Engineer',
@@ -41,7 +40,7 @@ export const USER_CONFIG = {
       type: 'wechat',
       icon: 'fab fa-weixin',
       text: '微信',
-      isSpecial: true,
+      url: 'https://thinking.simonaking.com/',
     },
   ] as ContactLink[],
 } as const;

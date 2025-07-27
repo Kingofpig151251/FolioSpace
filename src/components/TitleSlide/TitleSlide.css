@@ -12,23 +12,26 @@
 
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
 
-  padding: 80px 60px;
+  min-height: 600px;
+  padding: 60px 80px;
 
   transition: all 0.3s ease;
-  text-align: center;
 
+  border: 1px solid var(--border-light);
   border-radius: 20px;
   background: var(--bg-card);
-  box-shadow: 0 8px 40px var(--shadow-light);
+  box-shadow: 0 8px 32px var(--shadow-light);
+
+  backdrop-filter: blur(20px);
 }
 
 .title-slide:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 
-  box-shadow: 0 12px 48px var(--shadow-medium);
+  border-color: var(--border-medium);
+  box-shadow: 0 16px 48px var(--shadow-medium);
 }
 
 .profile-container {
@@ -36,145 +39,169 @@
   align-items: center;
   flex-direction: column;
 
+  width: 100%;
+
   /* max-width: 600px; */
 
-  animation: slideInUp 0.8s ease-out;
+  text-align: center;
 
-  gap: 32px;
+  gap: 36px;
 }
 
-/* 头像和问候语的左右布局容器 - 水平居中 */
-
 .header-section {
+  position: relative;
+
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
   width: 100%;
-  margin-bottom: 16px;
 
-  gap: 32px;
+  gap: 20px;
 }
-
-/* 头像部分 */
 
 .avatar-section {
   position: relative;
 
   flex-shrink: 0;
+
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(8px);
+}
+
+.avatar-section:hover {
+  transform: translateY(0);
+}
+
+.greeting-section {
+  position: relative;
+
+  flex: 1;
+
+  min-width: 0;
+
+  /* max-width: 400px; */
+
+  margin-left: 16px;
+  padding-top: 12px;
+
+  text-align: left;
 }
 
 .profile-avatar {
-  width: 100px;
-  height: 100px;
+  position: relative;
 
-  transition: all 0.3s ease;
+  width: 110px;
+  height: 110px;
 
-  border: 3px solid var(--border-light);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  border: 4px solid var(--border-medium);
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px var(--shadow-light) , 0 4px 16px var( --shadow-light);
 
   object-fit: cover;
 }
 
 .profile-avatar:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) rotate( 2deg);
 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: var(--accent-primary);
+  box-shadow: 0 16px 48px var(--shadow-medium) , 0 8px 24px rgba( 66, 153, 225, 0.3) , 0 0 0 8px rgba( 66, 153, 225, 0.1);
+
+  filter: brightness(1.1) saturate( 1.2);
 }
 
 .status-indicator {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 15px;
+  bottom: 15px;
 
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 
-  animation: pulse-dot 2s infinite;
+  animation: pulse 2.5s infinite;
 
-  border: 2px solid var(--bg-card);
+  border: 3px solid var(--bg-card);
   border-radius: 50%;
-  background: #10B981;
+  background: linear-gradient(135deg, var( --success-color) , #059669);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
 }
 
-@keyframes pulse-dot {
+@keyframes pulse {
 
 0%,
 100% {
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
 }
 
 50% {
-  box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4) , 0 0 0 6px rgba( 16, 185, 129, 0.1);
 }
 
 }
 
-/* 问候语 */
-
-.greeting-section {
-  flex: 1;
-
-  text-align: left;
-}
-
-.greeting {
+.profile-name {
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.2;
 
   margin: 0;
 
-  color: var(--text-primary);
-}
+  transition: all 0.3s ease;
+  transform: translateY(50%);
+  transform-origin: left center;
+  word-break: break-word;
 
-/* Bio 部分 - 左对齐 */
+  color: var(--text-primary);
+
+  overflow-wrap: break-word;
+}
 
 .bio-section {
   display: flex;
+  align-items: center;
   flex-direction: column;
 
   width: 100%;
-  margin-bottom: 16px;
+  max-width: 520px;
 
-  text-align: center;
-
-  gap: 8px;
+  gap: 20px;
 }
 
 .bio-line {
   font-size: 1.1rem;
-  line-height: 1.6;
+  line-height: 1.7;
+
+  position: relative;
 
   margin: 0;
+  padding: 8px 16px;
 
   transition: all 0.3s ease;
+  text-align: center;
 
   color: var(--text-secondary);
+  border-radius: 12px;
 }
 
 .bio-line:hover {
-  transform: translateX(2px);
+  transform: translateY(-1px);
 
   color: var(--text-primary);
 }
-
-/* 社交链接 - 只显示图标 */
 
 .social-links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
-  margin-bottom: 16px;
+  margin-top: 8px;
 
-  gap: 12px;
+  gap: 14px;
 }
 
 .social-link {
-  font-size: 1.1rem;
-
   position: relative;
 
   display: flex;
@@ -186,294 +213,178 @@
 
   cursor: none;
   transition: all 0.3s ease;
-  text-decoration: none;
+  transform-origin: center;
 
   color: var(--text-secondary);
-  border: 2px solid var(--border-medium);
+  border: 2px solid var(--border-light);
   border-radius: 12px;
-  background: var(--bg-card);
+  background: var(--bg-secondary);
 }
 
 .social-link:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale( 1.05);
 
-  color: white;
+  color: var(--accent-primary);
   border-color: var(--accent-primary);
-  background: var(--accent-primary);
-  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+  background: var(--bg-card);
 }
 
 .social-link i {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+
+  transition: transform 0.3s ease;
 }
 
-/* 隐藏社交链接的文字 */
-
-.social-link span {
-  display: none;
+.social-link:hover i {
+  transform: scale(1.1);
 }
 
-/* 微信二维码图片样式 */
-
-.wechat-qr {
+.wechat-popup {
   position: absolute;
   z-index: 1000;
-  top: 60px;
+  top: 100%;
   left: 50%;
 
+  display: flex;
   visibility: hidden;
+  align-items: center;
+  flex-direction: column;
 
-  width: 200px;
+  margin-top: 16px;
+  padding: 20px;
+
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%) translateY( -12px) scale( 0.9);
+
+  opacity: 0;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  background: var(--bg-card);
+  box-shadow: 0 16px 40px var(--shadow-medium) , 0 8px 20px var( --shadow-light);
+
+  backdrop-filter: blur(20px);
+  gap: 12px;
+}
+
+.social-link.wechat:hover .wechat-popup {
+  visibility: visible;
+
+  transform: translateX(-50%) translateY( 0) scale( 1);
+
+  opacity: 1;
+}
+
+.wechat-qr {
+  width: 180px;
   height: auto;
 
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-
-  opacity: 0;
   border-radius: 12px;
-  background: white;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px var(--shadow-light);
 }
-
-.social-link.wechat:hover .wechat-qr {
-  visibility: visible;
-
-  transform: translateX(-50%) translateY( 10px);
-
-  opacity: 1;
-}
-
-/* 微信二维码提示文字 */
 
 .wechat-hint {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
 
-  position: absolute;
-  top: 280px;
-  left: 50%;
+  margin: 0;
 
-  visibility: hidden;
-
-  padding: 4px 8px;
-
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-  white-space: nowrap;
-
-  opacity: 0;
-  color: white;
-  border-radius: 4px;
-  background: rgba(0, 0, 0, 0.8);
+  color: var(--text-secondary);
 }
 
-.social-link.wechat:hover .wechat-hint {
-  top: 290px;
-
-  visibility: visible;
-
-  opacity: 1;
-}
-
-/* 暗主题适配 */
-
-[data-theme="dark"] .profile-avatar {
-  border-color: var(--border-medium);
-}
-
-[data-theme="dark"] .social-link {
-  border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-[data-theme="dark"] .social-link:hover {
-  border-color: var(--accent-primary);
-  background: var(--accent-primary);
-}
-
-/* 滚动提示 - 降低透明度，不要太明显 */
+/* Scroll hint */
 
 .scroll-hint {
-  font-size: 0.85rem;
-
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
+  font-size: 0.9rem;
+  font-weight: 500;
 
   display: flex;
   align-items: center;
 
-  transition: opacity 0.3s ease;
-  transform: translateX(-50%);
-  animation: subtle-pulse 3s infinite;
+  margin-top: 20px;
 
-  opacity: 0.4;
+  transition: all 0.3s ease;
+  animation: float 3s ease-in-out infinite;
+
+  opacity: 0.7;
   color: var(--text-hint);
 
   gap: 8px;
 }
 
 .scroll-hint:hover {
-  opacity: 0.7;
+  transform: translateY(-2px);
+
+  opacity: 1;
+  color: var(--accent-primary);
 }
 
 .scroll-hint i {
   font-size: 0.8rem;
+
+  animation: bounce 2s ease-in-out infinite;
+
+  color: var(--accent-secondary);
 }
 
-@keyframes slideInUp {
-
-from {
-  transform: translateY(30px);
-
-  opacity: 0;
-}
-
-to {
-  transform: translateY(0);
-
-  opacity: 1;
-}
-
-}
-@keyframes subtle-pulse {
+@keyframes float {
 
 0%,
 100% {
-  opacity: 0.3;
+  transform: translateY(0);
 }
 
 50% {
-  opacity: 0.5;
+  transform: translateY(-4px);
+}
+
+}
+@keyframes bounce {
+
+0%,
+100% {
+  transform: translateY(0);
+}
+
+50% {
+  transform: translateY(3px);
 }
 
 }
 
-/* 响应式设计 */
+/* Dark theme optimizations */
 
-@media(max-width: 768px) {
-  .title-slide {
-    min-height: 500px;
-    padding: 60px 40px;
-  }
-
-  .profile-container {
-    max-width: 400px;
-
-    gap: 24px;
-  }
-
-  /* 在移动端改为上下布局 */
-
-  .header-section {
-    flex-direction: column;
-
-    text-align: center;
-
-    gap: 20px;
-  }
-
-  .greeting-section {
-    text-align: center;
-  }
-
-  .bio-section {
-    text-align: center;
-  }
-
-  .profile-avatar {
-    width: 90px;
-    height: 90px;
-  }
-
-  .greeting {
-    font-size: 2rem;
-  }
-
-  .bio-line {
-    font-size: 1rem;
-  }
-
-  .social-links {
-    gap: 10px;
-  }
-
-  .social-link {
-    width: 44px;
-    height: 44px;
-  }
-
-  .social-link i {
-    font-size: 1.1rem;
-  }
-
-  /* 移动端微信二维码适配 */
-
-  .wechat-qr {
-    top: 50px;
-
-    width: 160px;
-  }
-
-  .wechat-hint {
-    top: 220px;
-  }
-
-  .social-link.wechat:hover .wechat-hint {
-    top: 230px;
-  }
+[data-theme="dark"] .profile-name {
+  color: var(--text-primary);
 }
 
-@media(max-width: 480px) {
-  .title-slide {
-    margin: 10px;
-    padding: 40px 20px;
-  }
+[data-theme="dark"] .profile-name:hover {
+  color: var(--text-secondary);
+}
 
-  .profile-container {
-    max-width: 320px;
+[data-theme="dark"] .profile-avatar {
+  border-color: var(--border-medium);
+}
 
-    gap: 20px;
-  }
+[data-theme="dark"] .profile-avatar:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5) , 0 8px 24px rgba( 125, 211, 252, 0.3) , 0 0 0 8px rgba( 125, 211, 252, 0.1);
+}
 
-  .header-section {
-    gap: 16px;
-  }
+[data-theme="dark"] .bio-line:hover {
+  color: var(--text-primary);
+}
 
-  .profile-avatar {
-    width: 80px;
-    height: 80px;
-  }
+[data-theme="dark"] .social-link {
+  border-color: var(--border-medium);
+  background: rgba(255, 255, 255, 0.05);
+}
 
-  .greeting {
-    font-size: 1.8rem;
-  }
+[data-theme="dark"] .social-link:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  background: var(--bg-card);
+}
 
-  .bio-line {
-    font-size: 0.95rem;
-  }
-
-  .social-link {
-    width: 40px;
-    height: 40px;
-  }
-
-  .social-link i {
-    font-size: 1rem;
-  }
-
-  /* 小屏幕微信二维码适配 */
-
-  .wechat-qr {
-    top: 45px;
-
-    width: 140px;
-  }
-
-  .wechat-hint {
-    top: 200px;
-  }
-
-  .social-link.wechat:hover .wechat-hint {
-    top: 210px;
-  }
+[data-theme="dark"] .wechat-popup {
+  border-color: var(--border-medium);
+  background: var(--bg-card);
 }

@@ -3,5 +3,4 @@ export interface ContactLink {
   icon: string;
   text: string;
   url?: string;
-  isSpecial?: boolean;
 }
