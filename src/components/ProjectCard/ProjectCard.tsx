@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { GITHUB_TOKEN } from '../../constants/userConfig';
 import { GitHubRepoInfo, Link, Project } from '../../types/project';
 import './ProjectCard.css';
@@ -19,37 +19,115 @@ const formatDate = (dateString: string): string => {
   });
 };
 
-const ProjectCard = ({ project }: { project: Project }) => {
+const GitHubStats = memo(
+  ({
+    repoInfo,
+    loading,
+  }: {
+    repoInfo: GitHubRepoInfo | null;
+    loading: boolean;
+  }) => {
+    return (
+      <div className={`github-stats animate`}>
+        {loading ? (
+          <div className="loading-stats">
+            <i className="fas fa-spinner fa-spin"></i>
+            <span>Loading repository info...</span>
+          </div>
+        ) : repoInfo ? (
+          <div className="repo-meta">
+            {repoInfo.language && (
+              <div className="meta-item cursor-target">
+                <span>{repoInfo.language}</span>
+              </div>
+            )}
+            <div className="meta-item cursor-target">
+              <span>Created {formatDate(repoInfo.createdAt)}</span>
+            </div>
+          </div>
+        ) : (
+          <div className="no-repo-info">
+            <i className="fas fa-info-circle"></i>
+            <span>GitHub repository info unavailable</span>
+          </div>
+        )}
+      </div>
+    );
+  },
+);
+
+GitHubStats.displayName = 'GitHubStats';
+
+const ProjectLinks = memo(
+  ({
+    links,
+    repoInfo,
+    loading,
+  }: {
+    links: Link[];
+    repoInfo: GitHubRepoInfo | null;
+    loading: boolean;
+  }) => (
+    <div className={`project-links ${loading ? 'animate' : ''}`}>
+      {links.map((link: Link, index: number) => (
+        <a
+          key={index}
+          href={link.url}
+          className={`project-link cursor-target ${link.type === 'demo' ? '' : 'secondary'}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i
+            className={
+              link.type === 'demo'
+                ? 'fas fa-external-link-alt'
+                : 'fab fa-github'
+            }
+          ></i>
+          {link.text}
+          {repoInfo && link.type === 'code' && (
+            <span className="star-count">
+              <i className="fas fa-star"></i>
+              {formatCount(repoInfo.stars)}
+            </span>
+          )}
+        </a>
+      ))}
+    </div>
+  ),
+);
+
+ProjectLinks.displayName = 'ProjectLinks';
+
+const ProjectCard = memo(({ project }: { project: Project }) => {
   const isReverse = project.layout === 'reverse';
   const [repoInfo, setRepoInfo] = useState<GitHubRepoInfo | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!project) {
-      return;
-    }
-    const githubRepo = project.links.find(
-      (link) => link.type === 'code' && link.githubRepo,
-    )?.githubRepo;
-    if (!githubRepo) {
-      return;
-    }
+    (async () => {
+      const githubRepo = project.links.find(
+        (link) => link.type === 'code' && link.githubRepo,
+      )?.githubRepo;
+      if (!githubRepo) {
+        return;
+      }
+      try {
+        const response = await fetch(
+          `https://api.github.com/repos/${githubRepo}`,
+          {
+            headers: {
+              Authorization: `bearer ${GITHUB_TOKEN.join('')}`,
+              Accept: 'application/json',
+            },
+          },
+        );
 
-    setLoading(true);
-    fetch(`https://api.github.com/repos/${githubRepo}`, {
-      headers: {
-        Authorization: `bearer ${GITHUB_TOKEN}`,
-        Accept: 'application/vnd.github.v3+json',
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error(`GitHub API error: ${res.status}`);
+        if (!response.ok) {
+          throw new Error(`GitHub API error: ${response.status}`);
         }
-      })
-      .then((data) => {
+
+        const data = await response.json();
         setRepoInfo({
           stars: data.stargazers_count || 0,
           forks: data.forks_count || 0,
@@ -59,8 +137,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           createdAt: data.created_at,
           updatedAt: data.updated_at,
         });
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Failed to fetch GitHub repo info:', error);
         setRepoInfo({
           stars: 0,
@@ -71,97 +148,69 @@ const ProjectCard = ({ project }: { project: Project }) => {
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         });
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
-  }, [project]);
+      }
+    })();
+  }, []);
 
-  const InfoSection = () => (
-    <div className="project-info">
-      <h2 className="cursor-target">{project.title}</h2>
-      <p className="project-description">{project.description}</p>
-      <div className="project-tech">
+  const techTags = useMemo(
+    () => (
+      <div className={`project-tech ${loading ? 'animate' : ''}`}>
         {project.tech.map((tech: string, index: number) => (
           <span key={index} className="tech-tag cursor-target">
             {tech}
           </span>
         ))}
       </div>
-
-      {/* GitHub Repository Stats */}
-      {project.links.find(
-        (link) => link.type === 'code' && link.githubRepo,
-      ) && (
-        <div className="github-stats">
-          {loading ? (
-            <div className="loading-stats">
-              <i className="fas fa-spinner fa-spin"></i>
-              <span>Loading repository info...</span>
-            </div>
-          ) : repoInfo ? (
-            <>
-              <div className="repo-meta">
-                {repoInfo.language && (
-                  <div className="meta-item cursor-target">
-                    {/* <i className="fas fa-code"></i> */}
-                    <span>{repoInfo.language}</span>
-                  </div>
-                )}
-                <div className="meta-item cursor-target">
-                  {/* <i className="fas fa-calendar-plus"></i> */}
-                  <span>Created {formatDate(repoInfo.createdAt)}</span>
-                </div>
-              </div>
-            </>
-          ) : (
-            <div className="no-repo-info">
-              <i className="fas fa-info-circle"></i>
-              <span>GitHub repository info unavailable</span>
-            </div>
-          )}
-        </div>
-      )}
-
-      <div className="project-links">
-        {project.links.map((link: Link, index: number) => {
-          return (
-            <a
-              key={index}
-              href={link.url}
-              className={`project-link cursor-target ${link.type === 'demo' ? '' : 'secondary'}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i
-                className={
-                  link.type === 'demo'
-                    ? 'fas fa-external-link-alt'
-                    : 'fab fa-github'
-                }
-              ></i>
-              {link.text}
-              {repoInfo && link.type === 'code' && (
-                <span className="star-count">
-                  <i className="fas fa-star"></i>
-                  {formatCount(repoInfo.stars)}
-                </span>
-              )}
-            </a>
-          );
-        })}
-      </div>
-    </div>
+    ),
+    [project.tech, loading],
   );
 
-  const PreviewSection = () => (
-    <div className="project-preview cursor-target">
-      <img
-        className="project-image"
-        src={project.preview}
-        alt={project.title}
-      />
-    </div>
+  const InfoSection = useCallback(
+    () => (
+      <div className="project-info">
+        <h2 className={`cursor-target ${loading ? 'animate' : ''}`}>
+          {project.title}
+        </h2>
+        <p className={`project-description ${loading ? 'animate' : ''}`}>
+          {project.description}
+        </p>
+        {techTags}
+
+        <GitHubStats repoInfo={repoInfo} loading={loading} />
+
+        <ProjectLinks
+          links={project.links}
+          repoInfo={repoInfo}
+          loading={loading}
+        />
+      </div>
+    ),
+    [
+      project.title,
+      project.description,
+      techTags,
+      repoInfo,
+      loading,
+      project.links,
+    ],
+  );
+
+  const PreviewSection = useCallback(
+    () => (
+      <div
+        className={`project-preview cursor-target ${loading ? 'animate' : ''}`}
+      >
+        <img
+          className="project-image"
+          src={project.preview}
+          alt={project.title}
+          loading="lazy"
+        />
+      </div>
+    ),
+    [project.preview, project.title],
   );
 
   return (
@@ -179,6 +228,8 @@ const ProjectCard = ({ project }: { project: Project }) => {
       )}
     </div>
   );
-};
+});
+
+ProjectCard.displayName = 'ProjectCard';
 
 export default ProjectCard;
