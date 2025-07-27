@@ -38,7 +38,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
     setLoading(true);
     fetch(`https://api.github.com/repos/${githubRepo}`, {
       headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
+        Authorization: `bearer ${GITHUB_TOKEN}`,
         Accept: 'application/vnd.github.v3+json',
       },
     })

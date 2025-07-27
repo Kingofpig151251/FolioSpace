@@ -6,4 +6,7 @@ export default defineConfig({
     template: './public/index.html',
   },
   plugins: [pluginReact()],
+  output: {
+    assetPrefix: 'https://simonaking.com/projects/',
+  },
 });

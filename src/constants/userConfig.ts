@@ -1,7 +1,7 @@
 import { ContactLink } from '../types/userConfig';
 
 export const USER_CONFIG = {
-  AVATAR_URL: '/assets/avatar.jpeg',
+  AVATAR_URL: 'https://cdn.jsdelivr.net/gh/SimonAKing/images/projects/avatar.jpeg',
   NAME: 'SimonAKing',
   JOB_TITLE: 'SimonAKing',
   BIO: [
@@ -45,4 +45,4 @@ export const USER_CONFIG = {
   ] as ContactLink[],
 } as const;
 
-export const GITHUB_TOKEN = '9c48ed2297d7d9bf94476de723dbf1a6e4adeacd';
+export const GITHUB_TOKEN = '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';
