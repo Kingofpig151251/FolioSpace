@@ -13,6 +13,16 @@ export interface Link {
   githubRepo?: string; // 添加GitHub仓库信息用于获取star数
 }
 
+export interface GitHubRepoInfo {
+  stars: number;
+  forks: number;
+  issues: number;
+  language: string;
+  license: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface Project {
   id: string;
   name: string;

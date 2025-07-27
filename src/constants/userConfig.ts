@@ -45,3 +45,5 @@ export const USER_CONFIG = {
     },
   ] as ContactLink[],
 } as const;
+
+export const GITHUB_TOKEN = '9c48ed2297d7d9bf94476de723dbf1a6e4adeacd';

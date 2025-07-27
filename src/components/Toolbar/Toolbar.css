@@ -11,8 +11,6 @@
   gap: 12px;
 }
 
-/* 自定义tooltip样式 */
-
 .toolbar-btn {
   font-size: 1.1em;
 
@@ -34,8 +32,6 @@
   background: var(--bg-card);
   box-shadow: 0 4px 15px var(--shadow-light);
 }
-
-/* Tooltip样式 */
 
 .toolbar-btn::before {
   font-size: 0.875rem;
@@ -65,8 +61,6 @@
   box-shadow: 0 4px 12px var(--shadow-light);
 }
 
-/* Tooltip箭头 */
-
 .toolbar-btn::after {
   position: absolute;
   z-index: 1001;
@@ -87,16 +81,12 @@
   border-top-color: var(--bg-secondary);
 }
 
-/* Hover时显示tooltip */
-
 .toolbar-btn:hover::before,
 .toolbar-btn:hover::after {
   visibility: visible;
 
   opacity: 1;
 }
-
-/* 暗主题下的tooltip样式 */
 
 [data-theme="dark"] .toolbar-btn::before {
   border-color: var(--border-medium);
@@ -109,8 +99,6 @@
 [data-theme="dark"] .toolbar-btn::after {
   border-top-color: rgba(26, 26, 46, 0.95);
 }
-
-/* 暗主题下的特殊效果 */
 
 [data-theme="dark"] .toolbar-btn {
   backdrop-filter: blur(12px);
@@ -125,8 +113,6 @@
   background: var(--accent-primary);
 }
 
-/* 暗主题下的特殊hover效果 */
-
 [data-theme="dark"] .toolbar-btn:hover {
   background: rgba(99, 102, 241, 0.8);
   box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
@@ -137,13 +123,9 @@
   box-shadow: 0 4px 15px rgba(27, 41, 255, 0.3);
 }
 
-/* 主题切换按钮特殊样式 */
-
 .theme-btn {
   position: relative;
 }
-
-/* 主题切换按钮的指示点 */
 
 .theme-btn .theme-indicator {
   position: absolute;
@@ -168,8 +150,6 @@
 
   opacity: 1;
 }
-
-/* 主题切换按钮的tooltip箭头特殊处理 */
 
 .theme-btn::after {
   position: absolute;
@@ -197,21 +177,17 @@
   opacity: 1;
 }
 
-/* 不同主题状态的指示 */
-
 [data-theme="light"] .theme-btn .theme-indicator {
-  background: #6366f1; /* 深色主题的预览色 */
+  background: #6366f1;
 }
 
 [data-theme="dark"] .theme-btn .theme-indicator {
-  background: #f59e0b; /* 明亮主题的预览色 */
+  background: #f59e0b;
 }
 
 [data-theme="dark"] .theme-btn::after {
   border-top-color: rgba(26, 26, 46, 0.95);
 }
-
-/* 自动播放按钮样式 */
 
 .autoplay-active {
   color: #FFFFFF !important;
@@ -222,8 +198,6 @@
 .autoplay-active:hover {
   background: var(--accent-primary) !important;
 }
-
-/* 自动播放指示器 */
 
 .autoplay-indicator {
   position: absolute;
@@ -237,7 +211,7 @@
 
   border: 2px solid #FFFFFF;
   border-radius: 50%;
-  background: #10b981; /* 绿色表示运行中 */
+  background: #10b981;
 }
 
 @keyframes pulse {
@@ -256,8 +230,6 @@
 
 }
 
-/* 暗主题下的自动播放样式 */
-
 [data-theme="dark"] .autoplay-active {
   background: rgba(99, 102, 241, 0.9) !important;
   box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
@@ -266,8 +238,6 @@
 [data-theme="dark"] .autoplay-indicator {
   border-color: rgba(26, 26, 46, 0.95);
 }
-
-/* 地图按钮激活状态样式 */
 
 .minimap-active {
   color: #FFFFFF !important;
@@ -278,8 +248,6 @@
 .minimap-active:hover {
   background: var(--accent-primary) !important;
 }
-
-/* 地图指示器 */
 
 .minimap-indicator {
   position: absolute;
@@ -293,10 +261,8 @@
 
   border: 2px solid #FFFFFF;
   border-radius: 50%;
-  background: #3b82f6; /* 蓝色表示地图展开中 */
+  background: #3b82f6;
 }
-
-/* 暗主题下的地图按钮样式 */
 
 [data-theme="dark"] .minimap-active {
   background: rgba(99, 102, 241, 0.9) !important;

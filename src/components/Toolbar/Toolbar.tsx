@@ -41,6 +41,21 @@ const Toolbar = () => {
     const root = document.documentElement;
     root.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+
+    const themeColor = newTheme === 'light' ? '#F0F2FF' : '#0A0A0F';
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    const metaAppleStatusBar = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+    const metaMsNavButton = document.querySelector('meta[name="msapplication-navbutton-color"]');
+
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', themeColor);
+    }
+    if (metaAppleStatusBar) {
+      metaAppleStatusBar.setAttribute('content', themeColor);
+    }
+    if (metaMsNavButton) {
+      metaMsNavButton.setAttribute('content', themeColor);
+    }
   };
 
   const getCurrentSlideIndex = (): number => {

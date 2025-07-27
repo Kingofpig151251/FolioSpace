@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* 明主题配色 */
   --bg-primary: #F0F2FF;
   --bg-secondary: #FFFFFF;
   --bg-tertiary: #F8F9FF;
@@ -23,7 +22,6 @@
   --bg-gradient-2: rgba(27, 41, 255, 0.02);
 }
 
-/* 暗主题配色 */
 [data-theme="dark"] {
   --bg-primary: #0A0A0F;
   --bg-secondary: #1A1A2E;

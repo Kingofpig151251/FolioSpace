@@ -65,15 +65,12 @@
   height: 36px;
   padding: 10px 12px;
 
-  /* cursor: pointer; */
   transition: all 0.3s ease;
 
   color: white;
   border-bottom: 1px solid var(--border-medium);
   background: var(--accent-primary);
 }
-
-/* 暗主题下的特殊效果 */
 
 [data-theme="dark"] .nav-header {
   background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
@@ -82,8 +79,6 @@
 .nav-header:hover {
   background: var(--accent-hover);
 }
-
-/* 暗主题下的hover效果 */
 
 [data-theme="dark"] .nav-header:hover {
   background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
@@ -110,7 +105,6 @@
 .nav-toggle {
   padding: 4px;
 
-  /* cursor: pointer; */
   transition: all 0.3s ease;
   pointer-events: none;
 
@@ -171,7 +165,6 @@
 
   padding: 8px 12px;
 
-  /* cursor: pointer; */
   transition: all 0.3s ease;
 
   color: var(--text-primary);
@@ -187,14 +180,10 @@
   background: var(--tech-tag-bg);
 }
 
-/* 暗主题下的hover效果 */
-
 [data-theme="dark"] .nav-item:hover {
   color: #FFFFFF;
   background: rgba(99, 102, 241, 0.15);
 }
-
-/* 简化激活项目样式 */
 
 .nav-item.active {
   font-weight: 600;
@@ -203,8 +192,6 @@
   border-left: 3px solid var(--accent-primary);
   background: var(--tech-tag-bg);
 }
-
-/* 暗主题下的活跃状态 */
 
 [data-theme="dark"] .nav-item.active {
   color: #FFFFFF;
@@ -223,8 +210,6 @@
 
   background: var(--accent-primary);
 }
-
-/* 暗主题下的特殊效果 */
 
 [data-theme="dark"] .nav-item.active::before {
   box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
@@ -251,8 +236,6 @@
   color: var(--accent-primary);
 }
 
-/* 暗主题下的图标hover */
-
 [data-theme="dark"] .nav-item:hover .nav-icon {
   color: #FFFFFF;
 }
@@ -260,8 +243,6 @@
 .nav-item.active .nav-icon {
   color: var(--accent-primary);
 }
-
-/* 暗主题下的活跃图标 */
 
 [data-theme="dark"] .nav-item.active .nav-icon {
   color: #FFFFFF;
@@ -289,8 +270,6 @@
   color: var(--accent-primary);
 }
 
-/* 暗主题下的文字hover */
-
 [data-theme="dark"] .nav-item:hover .nav-text {
   color: #FFFFFF;
 }
@@ -300,8 +279,6 @@
 
   color: var(--accent-primary);
 }
-
-/* 暗主题下的活跃文字 */
 
 [data-theme="dark"] .nav-item.active .nav-text {
   color: #FFFFFF;
@@ -344,7 +321,6 @@
   margin-top: 4px;
   padding: 8px 12px;
 
-  /* cursor: pointer; */
   transition: all 0.3s ease;
 
   color: var(--text-secondary);
@@ -356,8 +332,6 @@
   color: var(--accent-primary);
   background: var(--bg-secondary);
 }
-
-/* 暗主题下的更多按钮 */
 
 [data-theme="dark"] .nav-more {
   background: rgba(99, 102, 241, 0.05);
@@ -371,8 +345,6 @@
 .nav-more i {
   margin-right: 6px;
 }
-
-/* 响应式调整 */
 
 @media(max-width: 768px) {
   .nav-list {

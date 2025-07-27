@@ -153,7 +153,7 @@ export const projectsData: Project[] = [
     id: SLIDE_IDS.PROJECTS,
     name: 'FolioSpace',
     title: 'FolioSpace',
-    preview: '/assets/avatar.jpeg',
+    preview: '/assets/folio_space.gif',
     position: { x: 1060, y: -1060, z: 1400, rotateY: 315 },
     description:
       'A modern and elegant personal portfolio website with smooth animations and responsive design',
