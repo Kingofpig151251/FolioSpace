@@ -86,13 +86,24 @@ function App() {
         if (isOverviewMode) {
           resetAllStepsOpacity();
         } else {
-          // 退出概览模式时，恢复正常的透明度控制
           const activeStep = document.querySelector('.step.active');
           if (activeStep) {
             updateSlideOpacity(activeStep.id);
           }
         }
       }
+    };
+
+    const updateImpressDimensions = () => {
+      const impressElement = document.getElementById('impress');
+      if (impressElement) {
+        impressElement.setAttribute('data-width', IMPRESS_CONFIG.WIDTH);
+        impressElement.setAttribute('data-height', IMPRESS_CONFIG.HEIGHT);
+      }
+    };
+
+    const handleResize = () => {
+      updateImpressDimensions();
     };
 
     const initializeOpacity = () => {
@@ -102,9 +113,9 @@ function App() {
       }
     };
 
-    // 添加事件监听器
     document.addEventListener('impress:stepenter', handleStepEnter);
     document.addEventListener('impress:stepleave', handleStepLeave);
+    window.addEventListener('resize', handleResize);
 
     // 监听类名变化来检测概览模式
     const impressElement = document.getElementById('impress');
@@ -123,10 +134,12 @@ function App() {
     }
 
     initializeOpacity();
+    updateImpressDimensions();
 
     return () => {
       document.removeEventListener('impress:stepenter', handleStepEnter);
       document.removeEventListener('impress:stepleave', handleStepLeave);
+      window.removeEventListener('resize', handleResize);
       if (observer) {
         observer.disconnect();
       }
