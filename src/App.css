@@ -3,8 +3,9 @@
 :root {
   /* 明主题配色 */
 
-  --bg-primary: #F6F6F6;
+  --bg-primary: #F0F2FF;
   --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F8F9FF;
   --bg-card: #FFFFFF;
   --text-primary: #101010;
   --text-secondary: #666666;
@@ -26,8 +27,9 @@
 /* 暗主题配色 */
 
 [data-theme="dark"] {
-  --bg-primary: #0F0F0F;
-  --bg-secondary: rgba(24, 24, 27, 0.95);
+  --bg-primary: #0A0A0F;
+  --bg-secondary: #1A1A2E;
+  --bg-tertiary: #16213E;
   --bg-card: rgba(24, 24, 27, 0.95);
   --text-primary: #E0E0E0;
   --text-secondary: #A1A1AA;
@@ -59,9 +61,9 @@ body {
 
   margin: 0;
 
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 
-  background: var(--bg-primary);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 35%, var(--bg-tertiary) 70%, var(--bg-secondary) 100%);
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -78,10 +80,13 @@ body {
   height: 100vh;
   min-height: 100vh;
 
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 
   color: var(--text-primary);
-  background: var(--bg-primary);
+  background:
+    radial-gradient(circle at 20% 80%, var(--bg-primary) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, var(--bg-tertiary) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
 }
 
 .App::before {
