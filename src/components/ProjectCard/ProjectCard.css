@@ -325,24 +325,3 @@ to {
 }
 
 }
-
-/* 响应式设计 */
-
-@media(max-width: 768px) {
-  .project-card {
-    text-align: center;
-
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .project-info h2 {
-    font-size: 1.8em;
-  }
-
-  .project-image {
-    font-size: 2.5em;
-
-    height: 200px;
-  }
-}

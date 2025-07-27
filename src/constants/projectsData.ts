@@ -171,28 +171,12 @@ export const projectsData: Project[] = [
     layout: 'reverse',
   },
   {
-    id: SLIDE_IDS.NEWSLETTER,
-    name: '周刊',
-    title: 'newsletter',
-    icon: 'fas fa-newspaper',
-    status: 'in-progress',
-    position: { x: 1500, y: 0, z: 1600, rotateY: 360 },
-    description:
-      '技术周刊和内容聚合平台。收集整理优质技术文章、开源项目、工具资源等，为技术人提供精选的学习资料。',
-    tech: ['Content', 'Newsletter', 'Curation', 'Tech News', 'Weekly'],
-    links: [
-      { type: 'demo', url: '#', text: '即将发布' },
-      { type: 'code', url: '#', text: '源码' },
-    ],
-    layout: 'standard',
-  },
-  {
     id: SLIDE_IDS.PROJECTS,
     name: '项目页',
     title: '项目页',
     icon: 'fas fa-layer-group',
     status: 'completed',
-    position: { x: 1060, y: 1060, z: 1800, rotateY: 405 },
+    position: { x: 1500, y: -1500, z: 600, rotateY: 360 },
     description:
       '当前所在的项目展示页面。采用 impress.js 构建的 3D 演示效果，展示个人项目作品集，提供沉浸式的浏览体验。',
     tech: ['impress.js', 'CSS3', '3D Transform', 'Animation', 'Responsive'],
@@ -208,7 +192,7 @@ export const projectsData: Project[] = [
         text: '源码',
       },
     ],
-    layout: 'reverse',
+    layout: 'standard',
   },
 ];
 
@@ -260,17 +244,12 @@ export const mapData = [
     icon: 'fas fa-robot',
   },
   {
-    id: SLIDE_IDS.NEWSLETTER,
-    name: '周刊',
-    icon: 'fas fa-newspaper',
-  },
-  {
     id: SLIDE_IDS.PROJECTS,
     name: '项目页',
     icon: 'fas fa-layer-group',
   },
   {
-    id: SLIDE_IDS.GLOBAL_OVERVIEW,
+    id: SLIDE_IDS.OVERVIEW,
     name: '概览',
     icon: 'fas fa-th-large',
   },

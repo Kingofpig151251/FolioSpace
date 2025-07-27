@@ -148,19 +148,19 @@ const Toolbar = () => {
         <i className="fas fa-chevron-right"></i>
       </button>
       <button
-        className="toolbar-btn"
-        onClick={handleOverview}
-        data-tooltip="项目总览"
-      >
-        <i className="fas fa-th-large"></i>
-      </button>
-      <button
         className={`toolbar-btn ${isAutoplay ? 'autoplay-active' : ''}`}
         onClick={toggleAutoplay}
         data-tooltip={isAutoplay ? '暂停自动播放' : '自动播放'}
       >
         <i className={`fas ${isAutoplay ? 'fa-pause' : 'fa-play'}`}></i>
         {isAutoplay && <div className="autoplay-indicator"></div>}
+      </button>
+      <button
+        className="toolbar-btn"
+        onClick={handleOverview}
+        data-tooltip="项目总览"
+      >
+        <i className="fas fa-th-large"></i>
       </button>
       <button
         className={`toolbar-btn ${isMiniMapVisible ? 'minimap-active' : ''}`}

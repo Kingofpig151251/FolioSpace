@@ -377,7 +377,7 @@
 @media(max-width: 768px) {
   .nav-list {
     right: 20px;
-    bottom: 100px;
+    bottom: 100px !important;
   }
 
   .nav-list.minimized {

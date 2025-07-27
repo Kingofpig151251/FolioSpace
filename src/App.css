@@ -63,7 +63,7 @@ body {
 
   transition: background 0.3s ease, color 0.3s ease;
 
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 35%, var(--bg-tertiary) 70%, var(--bg-secondary) 100%);
+  background: linear-gradient(135deg, var( --bg-primary) 0%, var( --bg-secondary) 35%, var( --bg-tertiary) 70%, var( --bg-secondary) 100%);
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -83,10 +83,7 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 
   color: var(--text-primary);
-  background:
-    radial-gradient(circle at 20% 80%, var(--bg-primary) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, var(--bg-tertiary) 0%, transparent 50%),
-    linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: radial-gradient(circle at 20% 80%, var( --bg-primary) 0%, transparent 50%) , radial-gradient( circle at 80% 20%, var( --bg-tertiary) 0%, transparent 50%) , linear-gradient( 135deg, var( --bg-secondary) 0%, var( --bg-primary) 100%);
 }
 
 .App::before {
@@ -117,8 +114,6 @@ body {
 
 }
 
-/* Optimized impress.js step styles */
-
 .step {
   font-size: 16px;
   line-height: 1.6;
@@ -128,9 +123,6 @@ body {
   visibility: hidden;
 
   width: 1000px;
-
-  /* Initially hide all steps */
-
   margin: 0;
   padding: 40px;
 
@@ -144,16 +136,12 @@ body {
   box-shadow: 0 8px 32px var(--shadow-light);
 }
 
-/* 暗主题下的特殊效果 */
-
 [data-theme="dark"] .step {
   box-shadow: 0 8px 32px var(--shadow-light) , 0 0 0 1px rgba( 255, 255, 255, 0.05);
 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
-
-/* When impress is enabled, all steps are faded by default */
 
 .impress-enabled .step {
   visibility: visible;
@@ -170,16 +158,10 @@ body {
   opacity: 0.2;
 }
 
-/* ONLY the active step is fully visible and interactive */
-
 .impress-enabled .step.active {
   transform: scale(1) translateZ( 0);
   pointer-events: auto;
-
-  /* 活动步骤的透明度由 JavaScript 动态控制以提供更精细的控制 */
 }
-
-/* Hover effect for active step */
 
 .impress-enabled .step.active:hover {
   transform: scale(1.01) translateZ( 0);
@@ -188,13 +170,9 @@ body {
   box-shadow: 0 12px 40px var(--shadow-medium);
 }
 
-/* 暗主题下的特殊hover效果 */
-
 [data-theme="dark"] .impress-enabled .step.active:hover {
   box-shadow: 0 12px 40px var(--shadow-medium) , 0 0 0 1px rgba( 99, 102, 241, 0.2);
 }
-
-/* Overview mode - all steps are visible and clickable */
 
 .impress-on-overview .step {
   cursor: pointer;
@@ -216,43 +194,31 @@ body {
   border-color: var(--accent-primary);
 }
 
-/* 确保活动步骤始终保持最高透明度 */
 .impress-enabled .step.active {
   opacity: 1 !important;
 }
 
-/* 过渡状态的特殊样式 */
 .impress-enabled .step.transitioning {
   transition: opacity 0.4s ease-out;
 
   opacity: 0.4 !important;
 }
 
-/* Hide overview step by default */
-
 #overview {
   display: none;
 }
-
-/* Scale adjustments for better visibility */
 
 .impress-enabled .step {
   transform-origin: center center;
 }
 
-/* Smoother fade transitions for slide content */
-
 .step * {
   transition: opacity 0.5s ease-in-out, color 0.3s ease;
 }
 
-/* Only active slide has full opacity content */
-
 .step.active * {
   opacity: 1;
 }
-
-/* All non-active slides have slightly faded content */
 
 .step:not(.active) {
   opacity: 0.8;
@@ -275,8 +241,6 @@ body {
 
   color: var(--accent-primary);
 }
-
-/* 暗主题下的发光效果 */
 
 [data-theme="dark"] .overview-title h1 {
   text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
@@ -316,20 +280,4 @@ to {
   opacity: 1;
 }
 
-}
-
-@media(max-width: 768px) {
-  .step {
-    width: 90vw;
-    padding: 24px;
-  }
-
-  .overview-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .overview-title h1 {
-    font-size: 2em;
-  }
 }

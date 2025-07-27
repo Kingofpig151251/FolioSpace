@@ -1,7 +1,5 @@
 export const SLIDE_IDS = {
   TITLE: 'title',
-  OVERVIEW: 'overview',
-
   GWITTER: 'gwitter',
   HOMEPAGE: 'homepage',
   GALLERY: 'gallery',
@@ -10,11 +8,8 @@ export const SLIDE_IDS = {
   SCRCPY: 'scrcpy',
   BLOG: 'blog',
   ITALKING: 'italking',
-  NEWSLETTER: 'newsletter',
   PROJECTS: 'projects',
-
-  GLOBAL_OVERVIEW: 'global-overview',
-  CONCLUSION: 'conclusion',
+  OVERVIEW: 'overview',
 } as const;
 
 export type SlideId = (typeof SLIDE_IDS)[keyof typeof SLIDE_IDS];
