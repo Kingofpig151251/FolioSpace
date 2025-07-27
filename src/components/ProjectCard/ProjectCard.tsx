@@ -1,6 +1,7 @@
+import { Link, Project } from '../../types/project';
 import './ProjectCard.css';
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project }: { project: Project }) => {
   const isReverse = project.layout === 'reverse';
 
   const InfoSection = () => (
@@ -10,14 +11,14 @@ const ProjectCard = ({ project }) => {
       </h2>
       <p className="project-description">{project.description}</p>
       <div className="project-tech">
-        {project.tech.map((tech, index) => (
+        {project.tech.map((tech: string, index: number) => (
           <span key={index} className="tech-tag">
             {tech}
           </span>
         ))}
       </div>
       <div className="project-links">
-        {project.links.map((link, index) => (
+        {project.links.map((link: Link, index: number) => (
           <a
             key={index}
             href={link.url}

@@ -13,15 +13,10 @@ import { SLIDE_IDS } from './constants/slideIds';
 function App() {
   useEffect(() => {
     let isOverviewMode = false;
-    let currentActiveStep: string | null = null;
 
     const handleStepEnter = (event: Event) => {
       const currentStepId = (event.target as Element).id;
-      currentActiveStep = currentStepId;
 
-      console.log('Entering step:', currentStepId); // 调试日志
-
-      // 检查是否进入概览模式
       if (currentStepId === SLIDE_IDS.OVERVIEW) {
         isOverviewMode = true;
         resetAllStepsOpacity();
@@ -32,13 +27,11 @@ function App() {
     };
 
     const handleStepLeave = (event: Event) => {
-      // 当离开一个步骤时，如果不在概览模式，添加过渡状态
       if (!isOverviewMode) {
         const leavingStepId = (event.target as Element).id;
         const leavingStep = document.getElementById(leavingStepId);
         if (leavingStep && leavingStepId !== SLIDE_IDS.OVERVIEW) {
           leavingStep.classList.add('transitioning');
-          // 1秒后移除过渡状态，恢复正常的非活动状态
           setTimeout(() => {
             leavingStep.classList.remove('transitioning');
           }, 1000);
@@ -59,12 +52,10 @@ function App() {
         stepElement.classList.remove('transitioning');
 
         if (stepElement.id === activeStepId) {
-          // 当前活动的幻灯片保持完全不透明
           stepElement.style.opacity = '1';
           stepElement.style.transition = 'opacity 0.8s ease-out';
           stepElement.style.pointerEvents = 'auto';
         } else {
-          // 非活动幻灯片降低透明度
           stepElement.style.opacity = '0.4';
           stepElement.style.transition = 'opacity 0.6s ease-out';
           stepElement.style.pointerEvents = 'none';

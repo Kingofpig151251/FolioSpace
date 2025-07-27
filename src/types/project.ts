@@ -6,7 +6,7 @@ interface Position {
   rotateY?: number;
 }
 
-interface Link {
+export interface Link {
   type: string;
   url: string;
   text: string;
