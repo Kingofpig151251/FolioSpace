@@ -65,7 +65,7 @@
   height: 36px;
   padding: 10px 12px;
 
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: all 0.3s ease;
 
   color: white;
@@ -110,7 +110,7 @@
 .nav-toggle {
   padding: 4px;
 
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: all 0.3s ease;
   pointer-events: none;
 
@@ -171,7 +171,7 @@
 
   padding: 8px 12px;
 
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: all 0.3s ease;
 
   color: var(--text-primary);
@@ -344,7 +344,7 @@
   margin-top: 4px;
   padding: 8px 12px;
 
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: all 0.3s ease;
 
   color: var(--text-secondary);

@@ -173,7 +173,7 @@ body {
 }
 
 .impress-on-overview .step {
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: auto;
 

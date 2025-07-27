@@ -12,7 +12,7 @@ export const projectsData: Project[] = [
       'A lightweight microblogging application that transforms GitHub Issues into your personal blogging platform',
     tech: ['Blogging', 'Web', 'Issues'],
     links: [
-      { type: 'demo', url: 'https://simonaking.com/Gwitter', text: '在线体验' },
+      { type: 'demo', url: 'https://simonaking.com/Gwitter', text: 'Live Demo' },
       {
         type: 'code',
         url: 'https://github.com/SimonAKing/Gwitter',
@@ -27,12 +27,12 @@ export const projectsData: Project[] = [
     name: 'HomePage',
     title: 'HomePage',
     preview: '/assets/homepage.gif',
-    position: { x: 1060, y: 1060, z: 200, rotateY: 45 },
+    position: { x: 1200, y: 800, z: 200, rotateY: 30 },
     description:
       'A modern and elegant personal homepage with fluid animation background, responsive design and smooth page transitions',
     tech: ['WebGL', 'Blogging', 'Web', 'Homepage'],
     links: [
-      { type: 'demo', url: 'https://simonaking.com', text: '在线体验' },
+      { type: 'demo', url: 'https://simonaking.com', text: 'Live Demo' },
       {
         type: 'code',
         url: 'https://github.com/SimonAKing/HomePage',
@@ -54,7 +54,7 @@ export const projectsData: Project[] = [
       {
         type: 'demo',
         url: 'https://simonaking.com/AnimatedGallery',
-        text: '在线体验',
+        text: 'Live Demo',
       },
       {
         type: 'code',
@@ -74,7 +74,7 @@ export const projectsData: Project[] = [
     description: 'An elegant terminal-style portfolio component for developers',
     tech: ['Terminal UI', 'Blogging', 'Web'],
     links: [
-      { type: 'demo', url: 'https://simonaking.com/about/', text: '在线体验' },
+      { type: 'demo', url: 'https://simonaking.com/about/', text: 'Live Demo' },
       {
         type: 'code',
         url: 'https://github.com/SimonAKing/TermFolio',
@@ -97,7 +97,7 @@ export const projectsData: Project[] = [
       {
         type: 'demo',
         url: 'https://thinking.simonaking.com/',
-        text: '了解详情',
+        text: 'Learn More',
       },
     ],
     layout: 'standard',
@@ -114,7 +114,7 @@ export const projectsData: Project[] = [
       {
         type: 'demo',
         url: 'https://github.com/SimonAKing/scrcpy-gui/releases',
-        text: '下载使用',
+        text: 'Download',
       },
       {
         type: 'code',
@@ -135,6 +135,11 @@ export const projectsData: Project[] = [
       'A voice social platform that connects strangers to relieve loneliness and enable confident self-expression',
     tech: ['WebRTC', 'Fullstack', 'P2P'],
     links: [
+      {
+        type: 'demo',
+        url: 'https://github.com/SimonAKing/ITalking/blob/master/CONTRIBUTING.md',
+        text: 'Deploy & Try',
+      },
       {
         type: 'code',
         url: 'https://github.com/SimonAKing/ITalking',
@@ -157,7 +162,7 @@ export const projectsData: Project[] = [
       {
         type: 'demo',
         url: 'https://simonaking.com/projects',
-        text: '在线体验',
+        text: 'Live Demo',
       },
       {
         type: 'code',

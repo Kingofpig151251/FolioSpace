@@ -10,6 +10,7 @@ export interface Link {
   type: string;
   url: string;
   text: string;
+  githubRepo?: string; // 添加GitHub仓库信息用于获取star数
 }
 
 export interface Project {

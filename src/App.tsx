@@ -6,6 +6,7 @@ import ProgressBar from './components/ProgressBar/ProgressBar';
 import ProjectSlide from './components/ProjectSlide/ProjectSlide';
 import TitleSlide from './components/TitleSlide/TitleSlide';
 import Toolbar from './components/Toolbar/Toolbar';
+import TargetCursor from './components/ui/target-cursor';
 import { IMPRESS_CONFIG } from './constants/impressConfig';
 import { projectsData } from './constants/projectsData';
 import { SLIDE_IDS } from './constants/slideIds';
@@ -117,7 +118,6 @@ function App() {
     document.addEventListener('impress:stepleave', handleStepLeave);
     window.addEventListener('resize', handleResize);
 
-    // 监听类名变化来检测概览模式
     const impressElement = document.getElementById('impress');
     let observer: MutationObserver | null = null;
 
@@ -170,6 +170,8 @@ function App() {
 
       <MiniMap />
       <Toolbar />
+
+      <TargetCursor spinDuration={2} hideDefaultCursor={true} />
     </div>
   );
 }

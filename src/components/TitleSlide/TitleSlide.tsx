@@ -31,7 +31,7 @@ const TitleSlide = () => {
               <img
                 src={USER_CONFIG.AVATAR_URL}
                 alt={`${USER_CONFIG.NAME} Avatar`}
-                className="profile-avatar"
+                className="profile-avatar cursor-target"
               />
               <div className="status-indicator"></div>
             </BlurFade>
@@ -51,7 +51,7 @@ const TitleSlide = () => {
             <button
               key={index}
               onClick={() => handleSocialClick(link.url || '', link.type)}
-              className={`social-link ${link.type === 'wechat' ? 'wechat' : ''}`}
+              className={`social-link cursor-target ${link.type === 'wechat' ? 'wechat' : ''}`}
               title={link.text}
             >
               <i className={link.icon}></i>

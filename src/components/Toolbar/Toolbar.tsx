@@ -105,10 +105,10 @@ const Toolbar = () => {
 
     if (newAutoplayState) {
       startAutoplay();
-      console.log('自动播放已开启');
+      console.log('Autoplay enabled');
     } else {
       stopAutoplay();
-      console.log('自动播放已关闭');
+      console.log('Autoplay disabled');
     }
   };
 
@@ -128,50 +128,50 @@ const Toolbar = () => {
   };
 
   const getThemeTitle = () => {
-    return theme === 'light' ? '切换到深色主题' : '切换到明亮主题';
+    return theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme';
   };
 
   return (
     <div className="toolbar">
       <button
-        className="toolbar-btn"
+        className="toolbar-btn cursor-target"
         onClick={handlePrev}
-        data-tooltip="上一页"
+        data-tooltip="Previous"
       >
         <i className="fas fa-chevron-left"></i>
       </button>
       <button
-        className="toolbar-btn"
+        className="toolbar-btn cursor-target"
         onClick={handleNext}
-        data-tooltip="下一页"
+        data-tooltip="Next"
       >
         <i className="fas fa-chevron-right"></i>
       </button>
       <button
-        className={`toolbar-btn ${isAutoplay ? 'autoplay-active' : ''}`}
+        className={`toolbar-btn cursor-target ${isAutoplay ? 'autoplay-active' : ''}`}
         onClick={toggleAutoplay}
-        data-tooltip={isAutoplay ? '暂停自动播放' : '自动播放'}
+        data-tooltip={isAutoplay ? 'Pause autoplay' : 'Start autoplay'}
       >
         <i className={`fas ${isAutoplay ? 'fa-pause' : 'fa-play'}`}></i>
         {isAutoplay && <div className="autoplay-indicator"></div>}
       </button>
       <button
-        className="toolbar-btn"
+        className="toolbar-btn cursor-target"
         onClick={handleOverview}
-        data-tooltip="项目总览"
+        data-tooltip="Overview"
       >
         <i className="fas fa-th-large"></i>
       </button>
       <button
-        className={`toolbar-btn ${isMiniMapVisible ? 'minimap-active' : ''}`}
+        className={`toolbar-btn cursor-target ${isMiniMapVisible ? 'minimap-active' : ''}`}
         onClick={toggleMiniMap}
-        data-tooltip={isMiniMapVisible ? '收起地图' : '展开地图'}
+        data-tooltip={isMiniMapVisible ? 'Hide minimap' : 'Show minimap'}
       >
         <i className="fas fa-map"></i>
         {isMiniMapVisible && <div className="minimap-indicator"></div>}
       </button>
       <button
-        className="toolbar-btn theme-btn"
+        className="toolbar-btn theme-btn cursor-target"
         onClick={toggleTheme}
         data-tooltip={getThemeTitle()}
       >
