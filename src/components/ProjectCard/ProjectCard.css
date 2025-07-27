@@ -95,7 +95,7 @@
 }
 
 .github-stats.animate {
-  animation: slideInLeft 0.6s ease-out 0.25s both;
+  animation: slideInLeft ease-out 0.25s both;
 }
 
 .loading-stats {

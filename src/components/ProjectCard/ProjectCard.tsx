@@ -104,12 +104,14 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
   const [repoInfo, setRepoInfo] = useState<GitHubRepoInfo | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const githubRepo = project.links.find(
+    (link) => link.type === 'code' && link.githubRepo,
+  )?.githubRepo;
+
   useEffect(() => {
     (async () => {
-      const githubRepo = project.links.find(
-        (link) => link.type === 'code' && link.githubRepo,
-      )?.githubRepo;
       if (!githubRepo) {
+        setLoading(false);
         return;
       }
       try {
@@ -178,7 +180,7 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
         </p>
         {techTags}
 
-        <GitHubStats repoInfo={repoInfo} loading={loading} />
+        {githubRepo && <GitHubStats repoInfo={repoInfo} loading={loading} />}
 
         <ProjectLinks
           links={project.links}
