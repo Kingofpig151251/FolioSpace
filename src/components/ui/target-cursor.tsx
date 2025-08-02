@@ -16,6 +16,7 @@ const TargetCursor = ({
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [isTargeting, setIsTargeting] = useState(false);
   const [targetBounds, setTargetBounds] = useState<DOMRect | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   const moveCursor = useCallback((x: number, y: number) => {
     setCursorPos({ x, y });
@@ -31,6 +32,9 @@ const TargetCursor = ({
 
     const moveHandler = (e: MouseEvent) => {
       moveCursor(e.clientX, e.clientY);
+      if (!isVisible) {
+        setIsVisible(true);
+      }
     };
 
     const enterHandler = (e: MouseEvent) => {
@@ -67,14 +71,12 @@ const TargetCursor = ({
     window.addEventListener('mousemove', moveHandler);
     window.addEventListener('mouseover', enterHandler, { passive: true });
 
-    setCursorPos({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
-
     return () => {
       window.removeEventListener('mousemove', moveHandler);
       window.removeEventListener('mouseover', enterHandler);
       document.body.style.cursor = originalCursor;
     };
-  }, [targetSelector, moveCursor, hideDefaultCursor]);
+  }, [targetSelector, moveCursor, hideDefaultCursor, isVisible]);
 
   const getCornerPositions = () => {
     if (!targetBounds) return null;
@@ -110,6 +112,8 @@ const TargetCursor = ({
       className="target-cursor"
       style={{
         transform: `translate(${cursorPos.x}px, ${cursorPos.y}px) translate(-50%, -50%)`,
+        opacity: isVisible ? 1 : 0,
+        transition: 'opacity 0.2s ease',
       }}
     >
       <div
