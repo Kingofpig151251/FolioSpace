@@ -1,0 +1,6 @@
+name = "foliospace"
+compatibility_date = "2025-08-12"
+
+[site]
+bucket = "./dist"       # 必须与构建目录一致
+entry-point = "workers-site"
