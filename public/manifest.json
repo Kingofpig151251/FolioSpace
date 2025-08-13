@@ -1,0 +1,10 @@
+{
+  "name": "FolioSpace",
+  "short_name": "FolioSpace",
+  "description": "A modern and elegant personal portfolio website",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#747171",
+  "icons": []
+}
