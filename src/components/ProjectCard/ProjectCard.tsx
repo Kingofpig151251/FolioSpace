@@ -200,18 +200,25 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
   );
 
   const PreviewSection = useCallback(
-    () => (
-      <div
-        className={`project-preview cursor-target ${loading ? 'animate' : ''}`}
-      >
-        <img
-          className="project-image"
-          src={project.preview}
-          alt={project.title}
-          loading="lazy"
-        />
-      </div>
-    ),
+    () => {
+      // 如果 preview 為空，不顯示圖片
+      if (!project.preview) {
+        return null;
+      }
+      
+      return (
+        <div
+          className={`project-preview cursor-target ${loading ? 'animate' : ''}`}
+        >
+          <img
+            className="project-image"
+            src={project.preview}
+            alt={project.title}
+            loading="lazy"
+          />
+        </div>
+      );
+    },
     [project.preview, project.title],
   );
 
