@@ -14,7 +14,8 @@ export const projectsData: Project[] = [
     links: [
       {
         type: 'demo',
-        url: 'https://simonaking.com/Gwitter',
+        // url: 'https://simonaking.com/Gwitter', // 註釋掉硬編碼域名
+        url: '#', // 暫時使用 # 作為佔位符
         text: 'Live Demo',
       },
       {
@@ -36,7 +37,8 @@ export const projectsData: Project[] = [
       'A modern and elegant personal homepage with fluid animation background, responsive design and smooth page transitions',
     tech: ['WebGL', 'Blogging', 'Web', 'Homepage'],
     links: [
-      { type: 'demo', url: 'https://simonaking.com', text: 'Live Demo' },
+      // { type: 'demo', url: 'https://simonaking.com', text: 'Live Demo' }, // 註釋掉硬編碼域名
+      { type: 'demo', url: '#', text: 'Live Demo' }, // 暫時使用 # 作為佔位符
       {
         type: 'code',
         url: 'https://github.com/SimonAKing/HomePage',
@@ -57,7 +59,8 @@ export const projectsData: Project[] = [
     links: [
       {
         type: 'demo',
-        url: 'https://simonaking.com/AnimatedGallery',
+        // url: 'https://simonaking.com/AnimatedGallery', // 註釋掉硬編碼域名
+        url: '#', // 暫時使用 # 作為佔位符
         text: 'Live Demo',
       },
       {
@@ -78,7 +81,8 @@ export const projectsData: Project[] = [
     description: 'An elegant terminal-style portfolio component for developers',
     tech: ['Terminal UI', 'Blogging', 'Web'],
     links: [
-      { type: 'demo', url: 'https://simonaking.com/about/', text: 'Live Demo' },
+      // { type: 'demo', url: 'https://simonaking.com/about/', text: 'Live Demo' }, // 註釋掉硬編碼域名
+      { type: 'demo', url: '#', text: 'Live Demo' }, // 暫時使用 # 作為佔位符
       {
         type: 'code',
         url: 'https://github.com/SimonAKing/TermFolio',
@@ -100,7 +104,8 @@ export const projectsData: Project[] = [
     links: [
       {
         type: 'demo',
-        url: 'https://thinking.simonaking.com/',
+        // url: 'https://thinking.simonaking.com/', // 註釋掉硬編碼域名
+        url: '#', // 暫時使用 # 作為佔位符
         text: 'Learn More',
       },
     ],
@@ -165,7 +170,8 @@ export const projectsData: Project[] = [
     links: [
       {
         type: 'demo',
-        url: 'https://simonaking.com/projects',
+        // url: 'https://simonaking.com/projects', // 註釋掉硬編碼域名
+        url: '#', // 暫時使用 # 作為佔位符
         text: 'Live Demo',
       },
       {

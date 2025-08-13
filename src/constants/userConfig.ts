@@ -21,13 +21,15 @@ export const USER_CONFIG = {
     },
     {
       type: 'email',
-      url: 'mailto:hi@simonaking.com',
+      // url: 'mailto:hi@simonaking.com', // 註釋掉硬編碼域名
+      url: 'mailto:your-email@example.com', // 暫時使用佔位符
       icon: 'fas fa-envelope',
       text: '邮箱',
     },
     {
       type: 'website',
-      url: 'https://simonaking.com',
+      // url: 'https://simonaking.com', // 註釋掉硬編碼域名
+      url: '#', // 暫時使用 # 作為佔位符
       icon: 'fas fa-globe',
       text: '个人网站',
     },
@@ -41,7 +43,8 @@ export const USER_CONFIG = {
       type: 'wechat',
       icon: 'fab fa-weixin',
       text: '微信',
-      url: 'https://thinking.simonaking.com/',
+      // url: 'https://thinking.simonaking.com/', // 註釋掉硬編碼域名
+      url: '#', // 暫時使用 # 作為佔位符
     },
   ] as ContactLink[],
 } as const;

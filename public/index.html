@@ -47,18 +47,19 @@
       href="https://cdn.jsdelivr.net/gh/SimonAKing/images/PWA/apple-touch-icon.png"
     />
 
-    <link
+    <!-- 移除硬編碼的域名引用，改為相對路徑 -->
+    <!-- <link
       rel="alternate"
       type="application/atom+xml"
       title="SimonAKing"
       href="https://simonaking.com/blog/atom.xml"
-    />
-    <link href="https://simonaking.com/projects/" rel="canonical" />
+    /> -->
+    <!-- <link href="https://simonaking.com/projects/" rel="canonical" /> -->
 
-    <link rel="manifest" href="https://simonaking.com/manifest.json" />
+    <!-- <link rel="manifest" href="https://simonaking.com/manifest.json" /> -->
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-title" content="SimonAKing" />
-    <meta name="msapplication-starturl" content="https://simonaking.com" />
+    <!-- <meta name="msapplication-starturl" content="https://simonaking.com" /> -->
     <meta name="application-name" content="SimonAKing" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="SimonAKing" />
@@ -66,7 +67,7 @@
     <meta property="og:title" content="SimonAKing" />
     <meta property="og:site_name" content="SimonAKing" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://simonaking.com/projects/" />
+    <!-- <meta property="og:url" content="https://simonaking.com/projects/" /> -->
     <meta property="og:locale" content="en" />
     <meta
       name="description"
@@ -74,7 +75,7 @@
     />
     <meta name="keywords" content="SimonAKing,Projects,项目,作品集" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="https://simonaking.com/projects/" />
+    <!-- <meta name="twitter:site" content="https://simonaking.com/projects/" /> -->
     <meta name="twitter:creator" content="SimonAKing" />
 
     <script type="application/ld+json">
@@ -95,18 +96,18 @@
           "name": "SimonAKing",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://simonaking.com/images/PWA/192.png"
+            "url": "https://cdn.jsdelivr.net/gh/SimonAKing/images/blog/avatar.jpg"
           }
         },
-        "url": "https://simonaking.com/projects/",
-        "logo": "https://simonaking.com/images/PWA/192.png",
+        "url": "./",
+        "logo": "https://cdn.jsdelivr.net/gh/SimonAKing/images/blog/avatar.jpg",
         "image": {
           "@type": "ImageObject",
-          "url": "https://simonaking.com/images/PWA/192.png"
+          "url": "https://cdn.jsdelivr.net/gh/SimonAKing/images/blog/avatar.jpg"
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://simonaking.com/projects/"
+          "@id": "./"
         },
         "keywords": "SimonAKing,Projects,项目,作品集",
         "description": "STDIN | Think >> /dev/Mind - SimonAKing"
@@ -152,7 +153,8 @@
       <script src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://simonaking.com/registerSW.js?t=<%= htmlWebpackPlugin.options.version %>"></script>
+    <!-- 註釋掉外部服務工作器腳本，避免跨域問題 -->
+    <!-- <script src="https://simonaking.com/registerSW.js?t=<%= htmlWebpackPlugin.options.version %>"></script> -->
 
     <script
       async
