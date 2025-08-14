@@ -7,6 +7,7 @@ export default defineConfig({
   },
   plugins: [pluginReact()],
   output: {
-    assetPrefix: 'https://simonaking.com/projects/',
+    // 使用相對路徑，適合部署到任何域名
+    // assetPrefix: 'https://simonaking.com/projects/',
   },
 });
