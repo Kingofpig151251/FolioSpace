@@ -4,3 +4,9 @@ compatibility_date = "2025-08-12"
 [site]
 bucket = "./dist"       # 必须与构建目录一致
 entry-point = "workers-site"
+
+# R2 物件儲存空間配置
+[[r2_buckets]]
+binding = "ASSETS"
+bucket_name = "kingleung"
+preview_bucket_name = "kingleung"

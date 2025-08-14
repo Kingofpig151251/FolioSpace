@@ -1,11 +1,12 @@
-import animatedGalleryPreview from '../assets/animated_gallery.gif';
-import folioSpacePreview from '../assets/folio_space.gif';
-import gwitterPreview from '../assets/gwitter.gif';
-import homepagePreview from '../assets/homepage.gif';
-import italkingPreview from '../assets/italking.png';
-import scrcpyGUIPreview from '../assets/scrcpy-gui.gif';
-import termFolioGif from '../assets/term_folio.gif';
-import thinkingPreview from '../assets/wechat.png';
+// R2 圖片 URL
+const animatedGalleryPreview = 'https://kingleung.r2.dev/assets/animated_gallery.gif';
+const folioSpacePreview = 'https://kingleung.r2.dev/assets/folio_space.gif';
+const gwitterPreview = 'https://kingleung.r2.dev/assets/gwitter.gif';
+const homepagePreview = 'https://kingleung.r2.dev/assets/homepage.gif';
+const italkingPreview = 'https://kingleung.r2.dev/assets/italking.png';
+const scrcpyGUIPreview = 'https://kingleung.r2.dev/assets/scrcpy-gui.gif';
+const termFolioGif = 'https://kingleung.r2.dev/assets/term_folio.gif';
+const thinkingPreview = 'https://kingleung.r2.dev/assets/wechat.png';
 import { Project } from '../types/project';
 import { SLIDE_IDS } from './slideIds';
 
