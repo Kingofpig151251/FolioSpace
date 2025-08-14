@@ -17,6 +17,9 @@ out/
 .env.test.local
 .env.production.local
 
+# R2 上傳產生的檔案
+r2-urls.json
+
 # 日誌檔案
 *.log
 
@@ -38,6 +41,3 @@ Thumbs.db
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# R2 上傳產生的檔案
-r2-urls.json

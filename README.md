@@ -66,6 +66,20 @@ FolioSpace is a 3D project showcase tool that helps you create an online portfol
 - **Touch**: Swipe gesture support
 - **Map**: Click nodes for quick navigation
 
+## 🚀 Deployment & R2 Integration
+
+This project is optimized for deployment on Cloudflare Pages with Cloudflare R2 object storage integration:
+
+- **Cloudflare Pages**: Fast, global deployment
+- **R2 Storage**: Large image files stored on Cloudflare R2
+- **Global CDN**: Images served through Cloudflare's global network
+- **No Size Limits**: Large GIF files (30MB+) supported
+
+### R2 Configuration
+- Images are stored in R2 bucket: `kingleung`
+- Public development URL: `https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev`
+- All project preview images are served from R2
+
 ## 📁 Project Structure
 
 ```
@@ -82,20 +96,21 @@ FolioSpace/
 │   │   └── ui/            # Common UI components
 │   ├── constants/         # Configuration files
 │   │   ├── impressConfig.ts  # impress.js configuration
-│   │   ├── projectsData.ts   # Project data
+│   │   ├── projectsData.ts   # Project data (with R2 image URLs)
 │   │   ├── slideIds.ts       # Slide IDs
 │   │   └── userConfig.ts     # User configuration
 │   ├── types/             # TypeScript type definitions
 │   │   ├── global.d.ts    # Global types
 │   │   ├── project.ts     # Project types
 │   │   └── userConfig.ts  # User configuration types
-│   ├── assets/            # Static resources
+│   ├── assets/            # Static resources (small files only)
 │   ├── App.tsx            # Main app component
 │   └── index.tsx          # App entry point
 ├── public/                # Public files
 │   └── index.html         # HTML template
 ├── rsbuild.config.mjs     # Build configuration
 ├── tsconfig.json          # TypeScript configuration
+├── wrangler.toml          # Cloudflare configuration
 └── package.json           # Project dependencies
 ```
 
