@@ -6,7 +6,6 @@
       "scripts": {
       "prebuild": "node upload-images.js --update-projects",
       "build": "rsbuild build",
-      "postbuild": "node upload-images.js --revert-projects",
       "predev": "node upload-images.js --sync-dev",
       "dev": "rsbuild dev --open",
       "format": "prettier --write .",

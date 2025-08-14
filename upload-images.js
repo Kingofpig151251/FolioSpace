@@ -28,16 +28,20 @@ const s3Client = new S3Client({
 const SRC_ASSETS_DIR = path.join(__dirname, 'src', 'assets');
 const PUBLIC_ASSETS_DIR = path.join(__dirname, 'public', 'assets');
 const PROJECTS_DATA_FILE = path.join(__dirname, 'src', 'constants', 'projectsData.ts');
-const PROJECTS_DATA_BACKUP = path.join(__dirname, 'src', 'constants', 'projectsData.ts.bak');
 
 // 從 projectsData.ts 解析實際被使用到的 /assets/* 圖片
 function parseUsedAssetFiles(fileContent) {
-  const assetRegex = /['\"]\/?assets\/(.+?\.(?:gif|png|jpe?g|webp))['\"]/gi;
+  const patterns = [
+    /['\"]\/?assets\/([^'\"]+\.(?:gif|png|jpe?g|webp))['\"]/gi,
+    /['\"]https?:\/\/[^'\"]+\/assets\/([^'\"]+\.(?:gif|png|jpe?g|webp))['\"]/gi,
+  ];
   const found = new Set();
-  let match;
-  while ((match = assetRegex.exec(fileContent)) !== null) {
-    const filename = match[1];
-    found.add(filename);
+  for (const regex of patterns) {
+    let match;
+    while ((match = regex.exec(fileContent)) !== null) {
+      const filename = match[1];
+      found.add(filename);
+    }
   }
   return Array.from(found);
 }
@@ -154,24 +158,10 @@ function rewriteProjectsDataWithUrls(mapping) {
   }
 
   if (content !== replaced) {
-    // 建立備份
-    if (!fs.existsSync(PROJECTS_DATA_BACKUP)) {
-      fs.copyFileSync(PROJECTS_DATA_FILE, PROJECTS_DATA_BACKUP);
-    }
     fs.writeFileSync(PROJECTS_DATA_FILE, replaced, 'utf-8');
-    console.log('✍️ 已回寫 R2 URL 至 projectsData.ts');
+    console.log('✍️ 已回寫 R2 URL 至 projectsData.ts（不再還原為本地路徑）');
   } else {
     console.log('ℹ️ projectsData.ts 無需回寫');
-  }
-}
-
-function revertProjectsDataIfBackupExists() {
-  if (fs.existsSync(PROJECTS_DATA_BACKUP)) {
-    fs.copyFileSync(PROJECTS_DATA_BACKUP, PROJECTS_DATA_FILE);
-    fs.unlinkSync(PROJECTS_DATA_BACKUP);
-    console.log('↩️ 已還原 projectsData.ts');
-  } else {
-    console.log('ℹ️ 無備份可還原，跳過');
   }
 }
 
@@ -198,11 +188,6 @@ async function main() {
 
   if (args.includes('--sync-dev')) {
     syncDevAssetsToPublic();
-    return;
-  }
-
-  if (args.includes('--revert-projects')) {
-    revertProjectsDataIfBackupExists();
     return;
   }
 

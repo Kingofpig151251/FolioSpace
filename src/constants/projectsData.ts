@@ -1,12 +1,12 @@
 // 預設為本地公開資產路徑（/assets/*）；build 時會自動上傳並回寫為 R2 公開 URL
-const animatedGalleryPreview = '/assets/animated_gallery.gif';
-const folioSpacePreview = '/assets/folio_space.gif';
-const gwitterPreview = '/assets/gwitter.gif';
-const homepagePreview = '/assets/homepage.gif';
-const italkingPreview = '/assets/italking.png';
-const scrcpyGUIPreview = '/assets/scrcpy-gui.gif';
-const termFolioGif = '/assets/term_folio.gif';
-const thinkingPreview = '/assets/wechat.png';
+const animatedGalleryPreview = 'https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev/assets/animated_gallery.gif';
+const folioSpacePreview = 'https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev/assets/folio_space.gif';
+const gwitterPreview = 'https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev/assets/gwitter.gif';
+const homepagePreview = 'https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev/assets/homepage.gif';
+const italkingPreview = 'https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev/assets/italking.png';
+const scrcpyGUIPreview = 'https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev/assets/scrcpy-gui.gif';
+const termFolioGif = 'https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev/assets/term_folio.gif';
+const thinkingPreview = 'https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev/assets/wechat.png';
 import { Project } from '../types/project';
 import { SLIDE_IDS } from './slideIds';
 
