@@ -1,3 +1,11 @@
+import animatedGalleryPreview from '../assets/animated_gallery.gif';
+import folioSpacePreview from '../assets/folio_space.gif';
+import gwitterPreview from '../assets/gwitter.gif';
+import homepagePreview from '../assets/homepage.gif';
+import italkingPreview from '../assets/italking.png';
+import scrcpyGUIPreview from '../assets/scrcpy-gui.gif';
+import termFolioGif from '../assets/term_folio.gif';
+import thinkingPreview from '../assets/wechat.png';
 import { Project } from '../types/project';
 import { SLIDE_IDS } from './slideIds';
 
@@ -6,7 +14,7 @@ export const projectsData: Project[] = [
     id: SLIDE_IDS.GWITTER,
     name: 'Gwitter',
     title: 'Gwitter',
-    preview: '', // 移除圖片引用
+    preview: gwitterPreview,
     position: { x: 1500, y: 0, z: 0, rotateY: 0 },
     description:
       'A lightweight microblogging application that transforms GitHub Issues into your personal blogging platform',
@@ -14,8 +22,7 @@ export const projectsData: Project[] = [
     links: [
       {
         type: 'demo',
-        // url: 'https://simonaking.com/Gwitter', // 註釋掉硬編碼域名
-        url: '#', // 暫時使用 # 作為佔位符
+        url: 'https://simonaking.com/Gwitter',
         text: 'Live Demo',
       },
       {
@@ -31,14 +38,13 @@ export const projectsData: Project[] = [
     id: SLIDE_IDS.HOMEPAGE,
     name: 'HomePage',
     title: 'HomePage',
-    preview: '', // 移除圖片引用
+    preview: homepagePreview,
     position: { x: 1200, y: 800, z: 200, rotateY: 30 },
     description:
       'A modern and elegant personal homepage with fluid animation background, responsive design and smooth page transitions',
     tech: ['WebGL', 'Blogging', 'Web', 'Homepage'],
     links: [
-      // { type: 'demo', url: 'https://simonaking.com', text: 'Live Demo' }, // 註釋掉硬編碼域名
-      { type: 'demo', url: '#', text: 'Live Demo' }, // 暫時使用 # 作為佔位符
+      { type: 'demo', url: 'https://simonaking.com', text: 'Live Demo' },
       {
         type: 'code',
         url: 'https://github.com/SimonAKing/HomePage',
@@ -52,15 +58,14 @@ export const projectsData: Project[] = [
     id: SLIDE_IDS.GALLERY,
     name: 'AnimatedGallery',
     title: 'AnimatedGallery',
-    preview: '', // 移除圖片引用
+    preview: animatedGalleryPreview,
     position: { x: 0, y: 1500, z: 400, rotateY: 90 },
     description: 'A beautiful and modern photo gallery application',
     tech: ['BlurHash', 'Blogging', 'Web', 'Gallery'],
     links: [
       {
         type: 'demo',
-        // url: 'https://simonaking.com/AnimatedGallery', // 註釋掉硬編碼域名
-        url: '#', // 暫時使用 # 作為佔位符
+        url: 'https://simonaking.com/AnimatedGallery',
         text: 'Live Demo',
       },
       {
@@ -76,13 +81,12 @@ export const projectsData: Project[] = [
     id: SLIDE_IDS.TERMFOLIO,
     name: 'TermFolio',
     title: 'TermFolio',
-    preview: '', // 移除圖片引用
+    preview: termFolioGif,
     position: { x: -1060, y: 1060, z: 600, rotateY: 135 },
     description: 'An elegant terminal-style portfolio component for developers',
     tech: ['Terminal UI', 'Blogging', 'Web'],
     links: [
-      // { type: 'demo', url: 'https://simonaking.com/about/', text: 'Live Demo' }, // 註釋掉硬編碼域名
-      { type: 'demo', url: '#', text: 'Live Demo' }, // 暫時使用 # 作為佔位符
+      { type: 'demo', url: 'https://simonaking.com/about/', text: 'Live Demo' },
       {
         type: 'code',
         url: 'https://github.com/SimonAKing/TermFolio',
@@ -96,7 +100,7 @@ export const projectsData: Project[] = [
     id: SLIDE_IDS.THINKING,
     name: '思考的价值',
     title: '思考的价值',
-    preview: '', // 移除圖片引用
+    preview: thinkingPreview,
     position: { x: -1500, y: 0, z: 800, rotateY: 180 },
     description:
       '我们每天都会接收到过载的信息，然而明月与砾同囊，其中的优质信息往往会被淹没。[思考的价值] 由此而来，分享内容的不限，偏向于 LLMs、科技的方向',
@@ -104,8 +108,7 @@ export const projectsData: Project[] = [
     links: [
       {
         type: 'demo',
-        // url: 'https://thinking.simonaking.com/', // 註釋掉硬編碼域名
-        url: '#', // 暫時使用 # 作為佔位符
+        url: 'https://thinking.simonaking.com/',
         text: 'Learn More',
       },
     ],
@@ -115,7 +118,7 @@ export const projectsData: Project[] = [
     id: SLIDE_IDS.SCRCPY,
     name: 'Scrcpy-GUI',
     title: 'Scrcpy-GUI',
-    preview: '', // 移除圖片引用
+    preview: scrcpyGUIPreview,
     position: { x: -1060, y: -1060, z: 1000, rotateY: 225 },
     description: 'A simple & beautiful GUI application for scrcpy',
     tech: ['Electron', 'Scrcpy', 'Cross-platform'],
@@ -138,7 +141,7 @@ export const projectsData: Project[] = [
     id: SLIDE_IDS.ITALKING,
     name: 'ITalking',
     title: 'ITalking',
-    preview: '', // 移除圖片引用
+    preview: italkingPreview,
     position: { x: 0, y: -1500, z: 1200, rotateY: 270 },
     description:
       'A voice social platform that connects strangers to relieve loneliness and enable confident self-expression',
@@ -162,7 +165,7 @@ export const projectsData: Project[] = [
     id: SLIDE_IDS.PROJECTS,
     name: 'FolioSpace',
     title: 'FolioSpace',
-    preview: '', // 移除圖片引用
+    preview: folioSpacePreview,
     position: { x: 1060, y: -1060, z: 1400, rotateY: 315 },
     description:
       'A modern and elegant personal portfolio website with smooth animations and responsive design',
@@ -170,8 +173,7 @@ export const projectsData: Project[] = [
     links: [
       {
         type: 'demo',
-        // url: 'https://simonaking.com/projects', // 註釋掉硬編碼域名
-        url: '#', // 暫時使用 # 作為佔位符
+        url: 'https://simonaking.com/projects',
         text: 'Live Demo',
       },
       {
