@@ -4,17 +4,17 @@
   "private": true,
   "type": "module",
       "scripts": {
-      "prebuild": "node upload-images.js --update-projects",
       "build": "rsbuild build",
       "predev": "node upload-images.js --sync-dev",
       "dev": "rsbuild dev --open",
       "format": "prettier --write .",
       "lint": "eslint .",
       "preview": "rsbuild preview",
-      "upload-r2": "node upload-images.js"
+      "upload-r2": "node upload-images.js --update-projects"
     },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.864.0",
+    "dotenv": "^16.4.5",
     "framer-motion": "^12.23.9",
     "gsap": "^3.13.0",
     "react": "^19.1.0",
