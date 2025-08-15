@@ -1,13 +1,21 @@
-import { defineConfig } from '@rsbuild/core';
-import { pluginReact } from '@rsbuild/plugin-react';
-
+// rsbuild.config.mjs
 export default defineConfig({
   html: {
     template: './public/index.html',
   },
   plugins: [pluginReact()],
   output: {
-    // 使用相對路徑，適合部署到任何域名
-    // assetPrefix: 'https://simonaking.com/projects/',
+    // 排除大圖片檔案
+    copy: {
+      patterns: [
+        {
+          from: 'src/assets',
+          to: 'assets',
+          globOptions: {
+            ignore: ['**/*.gif', '**/*.png', '**/*.jpg', '**/*.jpeg']
+          }
+        }
+      ]
+    }
   },
 });
