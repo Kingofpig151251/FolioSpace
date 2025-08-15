@@ -2,20 +2,20 @@ import { ContactLink } from '../types/userConfig';
 
 export const USER_CONFIG = {
   AVATAR_URL:
-    'https://cdn.jsdelivr.net/gh/SimonAKing/images/projects/avatar.jpeg',
-  NAME: 'SimonAKing',
-  JOB_TITLE: 'SimonAKing',
+    'https://avatars.githubusercontent.com/u/98532667?v=4',
+  NAME: 'Kine Leung',
+  JOB_TITLE: 'IT Helpdesk',
   BIO: [
     '👨‍💻 Front | Back | Left | Right | End Engineer',
     '✨ Indie Hacker | Building What People Want',
     '🤖 AI Enthusiast | Exploring AI-powered Products',
   ],
-  WECHAT_ID: 'SimonAKing',
+  WECHAT_ID: 'Kingofpig151251',
 
   CONTACT_LINKS: [
     {
       type: 'github',
-      url: 'https://github.com/SimonAKing',
+      url: 'https://github.com/Kingofpig151251',
       icon: 'fab fa-github',
       text: 'GitHub',
     },
