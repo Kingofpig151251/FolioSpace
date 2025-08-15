@@ -4,13 +4,14 @@
   "private": true,
   "type": "module",
       "scripts": {
-      "build": "rsbuild build",
+      "build": "rsbuild build && node upload-images.js --clean-build",
       "predev": "node upload-images.js --sync-dev",
       "dev": "rsbuild dev --open",
       "format": "prettier --write .",
       "lint": "eslint .",
       "preview": "rsbuild preview",
-      "upload-r2": "node upload-images.js --update-projects"
+      "upload-r2": "node upload-images.js --update-projects",
+      "clean-build": "node upload-images.js --clean-build"
     },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.864.0",

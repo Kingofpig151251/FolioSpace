@@ -184,11 +184,43 @@ function syncDevAssetsToPublic() {
   console.log('✅ 同步完成');
 }
 
+function cleanBuildAssets() {
+  console.log('🧹 清理 build 輸出中的大圖片檔案...');
+  const distAssetsDir = path.join(__dirname, 'dist', 'assets');
+  if (fs.existsSync(distAssetsDir)) {
+    const files = fs.readdirSync(distAssetsDir);
+    let cleanedCount = 0;
+    for (const file of files) {
+      if (/\.(gif|png|jpg|jpeg|webp)$/i.test(file)) {
+        const filePath = path.join(distAssetsDir, file);
+        const stats = fs.statSync(filePath);
+        if (stats.size > 5 * 1024 * 1024) { // 5MB 限制
+          fs.unlinkSync(filePath);
+          console.log(`🗑️ 已清理大檔案: ${file} (${(stats.size / 1024 / 1024).toFixed(1)}MB)`);
+          cleanedCount++;
+        }
+      }
+    }
+    if (cleanedCount === 0) {
+      console.log('ℹ️ 沒有需要清理的大檔案');
+    } else {
+      console.log(`✅ 已清理 ${cleanedCount} 個大檔案`);
+    }
+  } else {
+    console.log('ℹ️ dist/assets 目錄不存在');
+  }
+}
+
 async function main() {
   const args = process.argv.slice(2);
 
   if (args.includes('--sync-dev')) {
     syncDevAssetsToPublic();
+    return;
+  }
+
+  if (args.includes('--clean-build')) {
+    cleanBuildAssets();
     return;
   }
 

@@ -1,21 +1,11 @@
 // rsbuild.config.mjs
+import { defineConfig } from '@rsbuild/core';
+import { pluginReact } from '@rsbuild/plugin-react';
+
 export default defineConfig({
   html: {
     template: './public/index.html',
   },
   plugins: [pluginReact()],
-  output: {
-    // 排除大圖片檔案
-    copy: {
-      patterns: [
-        {
-          from: 'src/assets',
-          to: 'assets',
-          globOptions: {
-            ignore: ['**/*.gif', '**/*.png', '**/*.jpg', '**/*.jpeg']
-          }
-        }
-      ]
-    }
-  },
+  // 使用預設配置，圖片檔案會在 build 後自動清理
 });

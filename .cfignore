@@ -1,0 +1,21 @@
+# Cloudflare Pages 忽略檔案
+# 排除所有圖片檔案，避免部署問題
+
+# 排除 dist 目錄中的所有圖片
+dist/assets/*.gif
+dist/assets/*.png
+dist/assets/*.jpg
+dist/assets/*.jpeg
+dist/assets/*.webp
+
+# 排除 src 目錄中的原始圖片
+src/assets/*.gif
+src/assets/*.png
+src/assets/*.jpg
+src/assets/*.jpeg
+src/assets/*.webp
+
+# 排除其他可能的大檔案
+*.log
+node_modules/
+.git/
