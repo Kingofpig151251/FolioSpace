@@ -1,4 +1,4 @@
-// 預設為本地公開資產路徑（/assets/*）；build 時會自動上傳並回寫為 R2 公開 URL
+// R2 圖片 URL (使用公用開發 URL)
 const animatedGalleryPreview = 'https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev/assets/animated_gallery.gif';
 const folioSpacePreview = 'https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev/assets/folio_space.gif';
 const gwitterPreview = 'https://pub-85ad51a1551d4f3a8a67facf2bfcfabb.r2.dev/assets/gwitter.gif';
